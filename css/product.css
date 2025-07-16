@@ -1,0 +1,115 @@
+#search-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 200px;
+}
+
+#search-section h1 {
+    width: 100%;
+    padding-bottom: 50px;
+    text-align: center;
+    font-size: 50px;
+    background-color: #fff;
+    z-index: 997;
+}
+
+.search-section-container {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    background-color: #d9d9d9;
+    gap: 100px;
+    padding: 20px 15px;
+    border-radius: 5px;
+    position: relative;
+    z-index: 990;
+}
+
+.search-container {
+    display: flex;
+    width: 40%;
+}
+
+#search-input {
+    width: 100%;
+    padding: 10px 30px;
+    font-size: 20px;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    color: #363232
+}
+
+.categories-container {
+    width: 50%;
+    display: flex;
+    gap: 30px;
+}
+
+.categories-container .category-box {
+    position: relative;
+}
+
+.categories-container .category-box span {
+    color: #363232;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 20px 50px;
+}
+
+.categories-container .category-box span:hover {
+    background-color: #a59f9fd0;
+}
+
+.category-list {
+    position: absolute;
+    top: 40px;
+    background-color: #d9d9d9;
+    padding: 15px 0px 20px 0px;
+    width: 200px;
+    flex-direction: column;
+    gap: 25px;
+    /* display: none; */
+    transform: translateY(-100%);
+    opacity: 0;
+    z-index: -999;
+    transition: all ease-in-out .3s;
+    text-align: center;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.categories-container .category-box:hover .category-list {
+    /* display: block; */
+    transform: translateY(0);
+    opacity: 1;
+    z-index: 980;
+}
+
+.category-list li {
+    list-style: none;
+    padding: 12px 10px;
+    color: #363232;
+    cursor: pointer;
+
+}
+
+.category-list li:hover {
+    color: #838080;
+}
+
+.category-box .category {
+  z-index: 999;
+}
+
+/*---------------------------------------------------*/
+
+
+
+
+  /* .product-card div {
+    display: flex;
+    gap: 5px;
+  } */
