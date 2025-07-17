@@ -85,3 +85,26 @@ document.addEventListener("DOMContentLoaded", () => { // runs a callback functio
 
 
 
+/*
+document.querySelector("#rent-btn").addEventListener("click", function() {
+    const productId = this.getAttribute("data-product-id");
+
+    fetch("../includes/product_page_contr.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "product_id=" + productId
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+
+*/
+
+
+
