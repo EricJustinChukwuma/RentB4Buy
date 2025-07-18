@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => { // runs a callback functio
         const productCard = document.createElement('div'); // creates a new element div
         productCard.className = 'product-card'; // gives the new element a class name called 'product-card'
 
-        // populate and create a div with a class of product-card for each element of the products parameter array.
+        // populate and create a div with a class of product-card for each element of the products array.
         productCard.innerHTML = `
             <img src="${product.image_url}" alt="${product.name}" class="product-image" />
             <h2>${product.name}</h2>
@@ -57,28 +57,53 @@ document.addEventListener("DOMContentLoaded", () => { // runs a callback functio
         });
 
         // rent now functionality
-        const rentBtn = document.querySelectorAll(".rent-btn");
+        const rentBtn = document.querySelectorAll(".rent-btn"); // fetches all the buttons with a class of 'rent-btn' and store it in a variable 
 
         rentBtn.forEach(button => {
-            button.addEventListener("click", (e) => {
-                const productId = e.target.dataset.productId;
+            button.addEventListener("click", function() {
+                const productId = this.getAttribute("data-product-id");
 
-                // Send the ID to your PHP handler
                 fetch("../includes/product_page_contr.php", {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/x-www-form-urlencoded",
+                        "Content-Type": "application/x-www-form-urlencoded"
                     },
-                    body: `product_id=${productId}`
+                    body: "product_id=" + encodeURIComponent(productId)
                 })
-                .then(res => res.text())
+                .then(response => response.json())
                 .then(data => {
-                    console.log("Server says:", data);
-                    alert("Rental Request Sent!");
+                    if (data.status === "success") {
+                        alert("product Rented Successfully")
+                    } else {
+                        alert(data.message || "Something went wrong.")
+                    }
                 })
-                .catch(error => console.error("Fetch error:", error))
-            })
-        })
+                .catch(error => console.log("Error:", error));
+            });
+        });
+
+        // document.querySelectorAll(".rent-btn").forEach(button => {
+        //     button.addEventListener("click", function() {
+        //         const productId = this.getAttribute("data-product-id");
+        
+        //         fetch("../includes/product_page_contr.php", {
+        //             method: "POST",
+        //             headers: {
+        //                 "Content-Type": "application/x-www-form-urlencoded"
+        //             },
+        //             body: "product_id=" + encodeURIComponent(productId)
+        //         })
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             if (data.status === "success") {
+        //                 alert("Product rented successfully!");
+        //             } else {
+        //                 alert(data.message || "Something went wrong.");
+        //             }
+        //         })
+        //         .catch(error => console.error('Error:', error));
+        //     });
+        // });
     }
 });
 
