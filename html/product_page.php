@@ -93,7 +93,6 @@
 
 
     <!-- <script src="../js/index.js"></script> -->
-    <!-- <script src="../js/product_page.js"></script> -->
     <script src="../js/ProductPage.js"></script>
 </body>
 </html>

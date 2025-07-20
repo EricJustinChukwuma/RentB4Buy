@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h3>£${product.price_per_day}/day</h3>
                 <p><strong>Available:</strong> ${product.available_qty}</p>
                 <div>
-                    <button class="rent-btn" type="button" data-product-id="${product.id}" ${!product.available_qty ? "disabled" : ""}>
+                    <button class="rent-btn" type="button" data-product-id="${product.product_id}" ${!product.available_qty ? "disabled" : ""}>
                         ${product.available_qty > 0 ? "Rent Now" : "Unavailable"}
                     </button>
                     <button class="add-to-cart-btn" ${!product.available_qty ? "disabled" : ""}>
@@ -62,12 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 fetch("../includes/product_page_contr.php", {
                     method: "POST",
                     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                    body: "product_id=" + encodeURIComponent(productId)
+                    body: "product_id=" + productId
                 })
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === "success") {
-                        alert("Product rented successfully!");
+                        alert("Product rental being processed!");
                     } else {
                         alert(data.message || "Something went wrong.");
                     }
