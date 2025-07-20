@@ -38,7 +38,7 @@ if (isset($_SESSION["user_id"])) {
 
         regenerate_session_ID();
     } else {
-        $interval = 60 * 30; // Time is seconds
+        $interval = 60 * 120; // Time is seconds
     
         if(time() - $_SESSION["last_regeneration"] >= $interval) {
             regenerate_session_ID();

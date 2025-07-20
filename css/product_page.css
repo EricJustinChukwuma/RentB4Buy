@@ -175,3 +175,8 @@
     background-color: gray;
     cursor: not-allowed;
 }
+
+.product-card .minus-product, .product-card .add-product {
+    background-color: red;
+    font-size: 25px;
+}
