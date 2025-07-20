@@ -7,7 +7,7 @@
     "available": true,
     "image_url": "../images/iPhone.jpg",
     "description": "Apple M2 Pro chip with 16GB RAM and 512GB SSD.",
-    "price_per_day": 25
+    "price_per_day": 11.89
   },
   {
     "id": 2,
@@ -16,8 +16,8 @@
     "category": "Phones",
     "available": true,
     "image_url": "../images/iPhone-1.jpg",
-    "description": "IApple M2 Pro chip with 16GB RAM and 512GB SSD.",
-    "price_per_day": 5.5
+    "description": "Apple M2 Pro chip with 16GB RAM and 512GB SSD.",
+    "price_per_day": 15.5
   },
   {
     "id": 3,
@@ -31,12 +31,12 @@
   },
   {
     "id": 4,
-    "name": "Sony WH-3000Xz5 Headphones",
+    "name": "Sony VH-3000Xz5 Headphones",
     "price": 900,
     "category": "Audio",
     "available": true,
     "image_url": "../images/Headphones-1.jpg",
-    "description": "Industry-leading noise cancelling headphones.",
+    "description": "Industry-leading noise cancelling headphones that's durable.",
     "price_per_day": 5.5
   },
   {
@@ -101,7 +101,7 @@
   },
   {
     "id": 11,
-    "name": "Acer Laptop",
+    "name": "Acer Nitro Laptop",
     "price": 1650,
     "category": "Laptop",
     "available": true,
@@ -111,19 +111,19 @@
   },
   {
     "id": 12,
-    "name": "Apple Tablet",
+    "name": "Apple 16 pro Tablet",
     "price": 650,
     "category": "Tablets",
     "available": true,
     "image_url": "../images/Tablets-1.jpg",
-    "description": "intel Octa Core 11th Gen with 16GB and 512GB SSD.",
+    "description": "iOS Octa Core 14inch Screen with 16GB and 512GB SSD.",
     "price_per_day": 15
   },
   {
     "id": 13,
     "name": "Beach Chair",
     "price": 250,
-    "category": "Chair",
+    "category": "Chairs",
     "available": true,
     "image_url": "../images/chair.jpg",
     "description": "A stylish beach chair that fits anywhere",
@@ -132,7 +132,7 @@
   {
     "id": 14,
     "name": "Mahoganny Table",
-    "price": 650,
+    "price": 350,
     "category": "Tables",
     "available": true,
     "image_url": "../images/Table-1.jpg",
@@ -156,14 +156,14 @@
     "category": "Tables",
     "available": true,
     "image_url": "../images/Table-3.jpg",
-    "description": "intel Octa Core 11th Gen with 16GB and 512GB SSD.",
+    "description": "An expensive checkered tablecrafted with precision and sweat.",
     "price_per_day": 15
   },
   {
     "id": 17,
     "name": "Bolo Shirt",
     "price": 95,
-    "category": "Shirt",
+    "category": "Shirts",
     "available": true,
     "image_url": "../images/Shirt-1.jpg",
     "description": "A stylish and trendy shirt for any occasion.",
@@ -176,7 +176,7 @@
     "category": "Shirts",
     "available": true,
     "image_url": "../images/Shirt-2.jpg",
-    "description": "A strong and aesthetic table that make the room come alive.",
+    "description": "A uniqely designed and aesthetic table that make the room come alive.",
     "price_per_day": 34.5
   },
   {

@@ -43,6 +43,8 @@
         product_name VARCHAR(100) NOT NULL,
         description TEXT NOT NULL,
         category_id INT NOT NULL,
+        product_image VARCHAR(255),
+        price FLOAT NOT NULL,
         price_per_day FLOAT NOT NULL,
         deposit FLOAT NOT NULL,
         available_qty INT NOT NULL,
@@ -96,6 +98,30 @@
         FOREIGN KEY (user_id) REFERENCES users(id),
         FOREIGN KEY (product_id) REFERENCES products(product_id)
     );
+
+
+
+
+    INSERT INTO Products (product_name, description, product_image, price, price_per_day, available_qty)
+VALUES ("iPhone 16 pro", "Apple M2 Chip with 16GB RAM and 512GB SSD", "../images/iPhone-1.jpg", 1300, 11.89, 10),
+("iPhone 16 pro max", "Apple M2 Pro chip with 16GB RAM and 512GB SSD.", "../images/Sony-headphones.jpg", 1900, 15.5, 8),
+("Sony WH-1000XM5 Headphones", "Industry-leading noise cancelling headphones.", "../images/Sony-headphones.jpg", 900, 15.5, 8),
+("Sony vH-3000Xz5 Headphones", "Industry-leading noise cancelling headphones that's durable.", "../images/Headphones-1.jpg", 710, 10.5, 8),
+("Olympus Camera", "Mirrorless camera with 4K video and 24.2MP sensor.", "../images/Olympus_camera.jpg", 1200, 12.5, 6),
+("Canon EOS R50 Camera", "A state of the art camera with 4 hight tech lences.", "../images/Camera-1.jpg", 650, 11.5, 8),
+("Kodak E3050 Camera", "A fine photo-centric camera that focuses on clarity.", "../images/Camera-2.jpg", 540, 9.5, 8),
+("Asus Rog Strix Gaming Laptop", "Intel Quad Core 11th Gen with 32GB RAM and 1TB SSD.", "../images/Laptop-1.jpg", 3540, 9.5, 8),
+("Intel HP Laptop", "intel Octa Core 11th Gen with 16GB and 512GB SSD.", "../images/Laptop-2.jpg", 2640, 45.5, 8),
+("Mac Book Pro Laptop", "intel Octa Core 11th Gen with 16GB and 512GB SSD.", "../images/Laptop-3.jpg", 1640, 35.5, 8),
+("Acer Nitro Laptop", "intel Octa Core 11th Gen with 64GB and 512GB SSD.", "../images/Laptop-4.jpg", 2349.99, 38, 12),
+("Apple Tablet", "iOS Octa Core 14inch Screen with 16GB and 512GB SSD.", "../images/Tablets-1.jpg", 949.99, 38, 12),
+("Beach Chair", "A stylish beach chair that fits anywhere", "../images/chair.jpg", 250.99, 5.5, 12),
+("Mahoganny Table", "A stylish table fit for your special work place.", "../images/Table-1.jpg", 350.99, 5.5, 12),
+("Vanier Table", "A stylish table that fits almost anywhere.", "../images/Table-2.jpg", 350.99, 5.5, 12),
+("Checkered Table", "An expensive checkered tablecrafted with precision and sweat.", "../images/Table-3.jpg", 470.99, 9.5, 12),
+("Bolo Shirt", "A stylish and trendy shirt for any occasion.", "../images/Shirt-1.jpg", 70.99, 5.5, 12),
+("Manny Shirt", "A uniqely designed and aesthetic table that make the room come alive.", "../images/Shirt-2.jpg", 50.99, 2.5, 12),
+("Armani Shirt", "A beautiful shirt that goes well with any shirt", "../images/Shirt-3.jpg", 250.99, 2.5, 12)
 
 */
 
@@ -202,15 +228,15 @@ VALUES ("MikhailErics", "Eric", "Ifemeje", "EricJRiley@gmail.com", 12345, 1),
 */
 
 
-<?php
-    if(isset($_SESSION["user_id"])) {
-?>
-    <div class="cart-container">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-        <span class="cart-counter">0</span>
-    </div>
-<?php
-    } else {
-        echo "";
-    }
-?>
+// <?php
+//     if(isset($_SESSION["user_id"])) {
+// ?>
+//     <div class="cart-container">
+//         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+//         <span class="cart-counter">0</span>
+//     </div>
+// <?php
+//     } else {
+//         echo "";
+//     }
+// ?>
