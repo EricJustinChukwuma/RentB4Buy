@@ -228,15 +228,113 @@ VALUES ("MikhailErics", "Eric", "Ifemeje", "EricJRiley@gmail.com", 12345, 1),
 */
 
 
-// <?php
-//     if(isset($_SESSION["user_id"])) {
-// ?>
-//     <div class="cart-container">
-//         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
-//         <span class="cart-counter">0</span>
-//     </div>
-// <?php
-//     } else {
-//         echo "";
-//     }
-// ?>
+/*
+<?php
+// ob_clean(); // Clear output buffer
+require_once "config_session.inc.php";
+require_once "dbh.inc.php";
+
+// file_put_contents('debug_product.log', "RAW: " . file_get_contents("php://input") . "\n", FILE_APPEND);
+// file_put_contents('debug_product.log', "POST: " . print_r($_POST, true) . "\n", FILE_APPEND);
+
+// Sets the HTTP response type to application/json. This tells the browser (or any client) that the server will respond with JSON data.
+header("Content-Type: application/json");
+
+// CHECKS IF THE USER IS LOGGED IN
+if (!isset($_SESSION["user_id"])) {
+    echo json_encode([
+        "status" => "Success",
+        "message" => "User not logged in. Please login to rent now!"
+    ]);
+    exit();
+    // header("Location: ../Login.php");
+};
+
+// CHECKS IF CART SESSION VARIABLE IS NOT SET(EXISTING)
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = []; // ASSINGS SESSION VARIABLE CART TO AN EMPTY ARRAY
+}
+
+// RECEIVES THE DATA SENT IN THE BODY OF THE FETCH ELEMENT WHEN A USER CLICKS THE ADD TO CART BUTTON WHICH IS A STRINGIFIED OBJECT THAT BECOMES A JSON
+// reads the raw POST request body sent by fetch() in your JavaScript code
+$rawData = file_get_contents("php://input");
+$data = json_decode($rawData, true); // DECODES THE RAW DATA GOTTEN FROM THE FETCH REQUEST IN THE "ProductPage.js";
+
+// Validate JSON and get product data
+// And creates a new varaiable product_id and assigns it the value of data['product_id'] 
+// gotten from the fetch request in 'productpage.js' if the "data['product_id']" exist and if it doesn't exist assign Zero as the value
+$product_id = isset($data['product_id']) ? intval($data['product_id']) : 0;
+
+// checks if quantity in the data sent from the POST request actually exist and sets it to the quantity passed and if not sets it to 1
+$quantity = isset($data['quantity']) ? intval($data['quantity']) : 1; // Default to 1 if not provided
+
+
+if ($product_id > 0) {
+    try {
+        $query = "SELECT product_id, product_name, product_image, price, price_per_day, FROM Products WHERE product_id = :product_id;";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $product = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($product) {
+            if (isset($_SESSION['cart'])) {
+                $_SESSION['cart'][$product_id] = [
+                    "product_id" => $product["product_id"],
+                    "product_name" => $product["product_name"],
+                    "product_image" => $product["product_image"],
+                    "price" => $product["price"],
+                    "price_per_day" => $product["price_per_day"],
+                    "quantity" => $quantity   
+                ];
+            } else {
+                $_SESSION['cart'][$product_id]['quantity'] += $quantity;
+            };
+
+            echo json_encode([
+                "status" => "success",
+                "message" => "Product added to cart.",
+                "cart" => $_SESSION['cart']
+            ]);
+            exit;
+        } else {
+            echo json_encode(["status" => "error", "message" => "Product not found in database."]);
+        }
+
+
+    } catch(PDOException $e) {
+        echo json_encode(["status" => "error", "message" => "Database error: " . $e->getMessage()]);
+    }
+} else {
+    echo json_encode(["status" => "error", "message" => "Invalid product ID."]);
+}
+
+
+
+
+
+
+
+
+// Check if product ID is valid
+if ($product_id > 0) {
+    // Add product with given quantity
+    if (!isset($_SESSION['cart'][$product_id])) {
+        $_SESSION['cart'][$product_id] = $quantity;
+        $_SESSION['cart'][$productImg] = $productImg;
+        $_SESSION['cart'][$productPrice] = $productPrice;
+    } else {
+        $_SESSION['cart'][$product_id] += $quantity;
+    }
+
+    echo json_encode([
+        "status" => "success",
+        "message" => "Product added to cart.",
+        "cart" => $_SESSION['cart']
+    ]);
+    exit;
+}
+
+echo json_encode(["status" => "error", "message" => "Invalid product ID."]);
+
+*/
