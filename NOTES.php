@@ -99,6 +99,88 @@
         FOREIGN KEY (product_id) REFERENCES products(product_id)
     );
 
+    // NEW RENTALS SQL
+    CREATE TABLE rentals (
+        rental_id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        product_id INT NOT NULL,
+        quantity INT NOT NULL,
+        request_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+        start_date DATE DEFAULT NULL,
+        end_date DATE DEFAULT NULL,
+        address TEXT NOT NULL,
+        rent_status ENUM('pending', 'delivered', 'active', 'returned', 'overdue') DEFAULT 'pending',
+        payment_method VARCHAR(50) NOT NULL,
+        total_price DECIMAL(10, 2),
+        FOREIGN KEY (user_id) REFERENCES users(id),
+        FOREIGN KEY (product_id) REFERENCES products(product_id)
+    );
+
+    CREATE TABLE rentals (
+        rental_id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        address_id INT NOT NULL,
+        product_id INT NOT NULL,
+        quantity INT NOT NULL,
+        request_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+        start_date DATE DEFAULT NULL,
+        end_date DATE DEFAULT NULL,
+        rent_status ENUM('pending', 'delivered', 'active', 'returned', 'overdue') DEFAULT 'pending',
+        payment_method VARCHAR(50) NOT NULL,
+        total_price DECIMAL(10, 2),
+        FOREIGN KEY (user_id) REFERENCES users(id),
+        FOREIGN KEY (product_id) REFERENCES products(product_id),
+        FOREIGN KEY (address_id) REFERENCES addresses(address_id)
+    );
+    //////////////////////////////////
+
+
+    // SQL EVENT CODES
+    // Update Rentals after 3 days or request. 
+    SET GLOBAL event_scheduler = ON;
+
+    CREATE EVENT IF NOT EXISTS activate_rentals_after_3_days
+    ON SCHEDULE EVERY 1 DAY
+    DO
+    BEGIN
+        UPDATE rentals
+        SET rent_status = 'active'
+        WHERE rent_status = 'pending'
+        AND request_date <= NOW() - INTERVAL 3 DAY;
+    END;
+
+    //////////////////  Update Rentals after 3 days or request. /////////////////////
+    SET GLOBAL event_scheduler = ON;
+
+    DELIMITER $$
+
+    CREATE EVENT IF NOT EXISTS activate_rentals_after_3_days
+    ON SCHEDULE EVERY 1 DAY
+    DO
+    BEGIN
+        UPDATE rentals
+        SET rent_status = 'active'
+        WHERE rent_status = 'pending'
+        AND request_date <= NOW() - INTERVAL 3 DAY;
+    END$$
+
+    DELIMITER ;
+    /////////////////////////////////////////////////
+
+    // ADDRESS TABLE SQL CODES
+    CREATE TABLE addresses (
+        address_id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        house_number VARCHAR(50),
+        street_name VARCHAR(255),
+        town VARCHAR(100),
+        county VARCHAR(100),
+        post_code VARCHAR(20),
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id)
+    );
+    ///////////////////////////////
+
 
 
 

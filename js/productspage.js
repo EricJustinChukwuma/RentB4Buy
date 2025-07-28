@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const productList = document.getElementById('product-list');
     const searchInput = document.getElementById('search-input');
 
-    // Fetch products from PHP API instead of static JSON
+    // Fetch products from PHP API that returns a list of product from database 
+    // that matches a condition in the Select query. instead of static JSON
     fetch('../includes/get_products.php') 
         .then(response => response.json()) // converts response to JSON
         .then(data => {
@@ -21,12 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
     searchInput.addEventListener('input', (e) => {
         const searchTerm = e.target.value.toLowerCase();
         const filtered = allProducts.filter(product =>
-            product.name.toLowerCase().includes(searchTerm) ||
+            product.product_name.toLowerCase().includes(searchTerm) ||
+            product.price.toString().includes(searchTerm) ||
             product.price_per_day.toString().includes(searchTerm) ||
             product.description.toLowerCase().includes(searchTerm)
         );
         renderProducts(filtered);
     });
+    
 
     // Function to render products
     function renderProducts(products) {
@@ -88,8 +91,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Attach event listeners for rent buttons
         document.querySelectorAll(".rent-btn").forEach(button => {
             button.addEventListener("click", function () {
+
                 // gets the attribute from the body element in the product page and checks if it's equal to true
-                const isLoggedIn = document.body.getAttribute("data-logged-in") === "true";  
+                const isLoggedIn = document.body.getAttribute("data-logged-in") === "true";
         
                 // if 'isLoggedIn' is not equal to true then alert the user they need to log in and redirects them to the login page
                 if (!isLoggedIn) {
@@ -102,23 +106,36 @@ document.addEventListener("DOMContentLoaded", () => {
                 // }
         
                 const productId = this.getAttribute("data-product-id");
-                console.log("Product ID sent:", productId);
+                const selectedQuantity = 1; // or get quantity if needed
 
-                // const productId = this.getAttribute("data-product-id");
-                window.location.href = `checkout.php?product_id=${productId}`;
-        
-                // fetch("../includes/product_page_contr.php", {
-                //     method: "POST",
-                //     headers: { "Content-Type": "application/json" },
-                //     body: JSON.stringify({ product_id: productId })
-                // })
-                // .then(response => response.json())
-                // .then(data => {
-                //     alert(data.message);
-                // })
-                // .catch(error => console.error("Error:", error));
+                fetch("../includes/cart_handler.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        product_id: productId,
+                        quantity: selectedQuantity
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        window.location.href = "../html/Cart.php"; // ✅ redirect to cart
+                    } else {
+                        alert(data.message || "Failed to rent product.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Error occurred. Check console.");
+                });
             });
+
         });
+
+        
+
 
 
 
@@ -157,6 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     console.log("Server Response:", data); // Debug
                     if (data.status === "success") {
                         alert(`Added ${selectedQuantity} item(s) to cart!`);
+                        window.location.reload();
                     } else {
                         alert(data.message || "Something went wrong.");
                     }

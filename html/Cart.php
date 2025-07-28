@@ -8,6 +8,10 @@ if (!isset($_SESSION['cart'])) {
 
 $cartItems = $_SESSION['cart'];
 $totalCost = 0;
+
+// $_SESSION['cart-total-price'] = $totalCost;
+
+$_SESSION['single-product-cost'] = [];
 ?>
 
 <!DOCTYPE html>
@@ -55,8 +59,17 @@ $totalCost = 0;
                 </thead>
                 <tbody>
                     <?php foreach ($cartItems as $item): 
-                        $itemTotal = $item['price_per_day'] * $item['quantity'];
+                        $itemTotal = $item['price_per_day'] * $item['quantity']; // sets product total price
                         $totalCost += $itemTotal;
+                        $_SESSION['cart-total-price'] = $totalCost;
+
+                        // Creates a session variable for each of the item and adds its total cost to the variable with the product id as the key to 
+                        // the associative array which is the value. only if the variable is not set.
+                        if(!isset($_SESSION['single-product_cost'])) {
+                            $_SESSION['single-product_cost'][$item['product_id']] = [
+                                "item_cost" => $itemTotal
+                            ];
+                        };
                     ?>
                         <tr data-id="<?php echo $item['product_id']; ?>">
                             <td><img src="<?php echo htmlspecialchars($item['product_image']); ?>" alt="<?php echo htmlspecialchars($item['product_name']); ?>"></td>
@@ -80,7 +93,7 @@ $totalCost = 0;
                 </tfoot>
             </table>
 
-            <button class="btn-checkout" onclick="window.location.href='cart_checkout.php'">Proceed to Checkout</button>
+            <button id="btn-checkout" class="btn-checkout" onclick="window.location.href='checkout.php'">Proceed to Checkout</button>
         <?php endif; ?>
     </div>
 

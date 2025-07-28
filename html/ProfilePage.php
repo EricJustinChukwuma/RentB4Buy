@@ -1,6 +1,5 @@
 <?php
     require_once "../includes/config_session.inc.php";
-    require_once "../includes/Login_View.inc.php";
 ?>
 
 <!DOCTYPE html>
@@ -28,8 +27,8 @@
                     <a href="../html/index.php">Home</a>
                     <a href="../html/product_page.php">Products</a>
                     <a href="../html/About.php">About</a>
-                    <a href="../html/How_it_works.html">How it works</a>
-                    <a href="../html/Contact.html">Contact Us</a>
+                    <a href="../html/How_it_works.php">How it works</a>
+                    <a href="../html/Contact.php">Contact Us</a>
                 </div>
 
                 <div class="cart-container">
@@ -90,6 +89,63 @@
             </div>
             <div class="line"></div>
         </div>
+    </section>
+
+
+    <section>
+        <div>
+            <h1>Top Rentals</h1>
+            <div>
+                <img src="" alt="img of most rented and bought app">
+                <img src="" alt="img of most rented and bought app">
+                <img src="" alt="img of most rented and bought app">
+                <img src="" alt="img of most rented and bought app">
+            </div>
+        </div>
+    </section>
+
+    <section id="rent-section">
+        <div class="rent-container">
+            <h1>How To Rent</h1>
+            <div>
+                <div class="rent-steps">
+                    <span>1</span>
+                    <div>
+                        <p>Register</p> <br>
+                        <p>with</p> <br>
+                        <p>us</p>
+                    </div>
+                </div>
+
+                <div class="rent-steps">
+                    <span>2</span>
+                    <div>
+                        <p>Browse and</p> <br>
+                        <p>choose a</p> <br>
+                        <p>product</p>
+                    </div>
+                </div>
+
+                <div class="rent-steps">
+                    <span>3</span>
+                    <div>
+                        <p>Proceed</p> <br>
+                        <p>to</p> <br>
+                        <p>checkout</p>
+                    </div>
+                </div>
+
+                <div class="rent-steps">
+                    <span>4</span>
+                    <div>
+                        <p>Sit and</p> <br>
+                        <p>wait for</p> <br>
+                        <p>delivery</p>
+                    </div>
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>  
     </section>
 
     <footer>

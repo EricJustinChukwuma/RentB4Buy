@@ -5,7 +5,7 @@ require_once "dbh.inc.php";
 header('Content-Type: application/json');
 
 try {
-    $query = "SELECT * FROM products WHERE available_qty > 0;";
+    $query = "SELECT * FROM products WHERE available_qty > 0";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -13,4 +13,4 @@ try {
 } catch (PDOException $e) {
     echo json_encode(["error" => $e->getMessage()]);
 }
-?>
+

@@ -182,3 +182,11 @@ if ($product_id > 0) {
 // } else {
 //     echo json_encode(["status" => "error", "message" => "Invalid product ID."]);
 // }
+
+/*
+$total_price = 0;
+
+if (isset($_SESSION['cart-total-price'])) {
+    $total_price = $_SESSION['cart-total-price'];
+}
+*/
