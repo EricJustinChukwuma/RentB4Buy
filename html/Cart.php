@@ -20,6 +20,7 @@ $_SESSION['single-product-cost'] = [];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Cart</title>
+    <link rel="stylesheet" href="../css/index3.css">
     <link rel="stylesheet" href="../css/cart.css">
     <style>
         body { 

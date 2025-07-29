@@ -125,7 +125,7 @@
         request_date DATETIME DEFAULT CURRENT_TIMESTAMP,
         start_date DATE DEFAULT NULL,
         end_date DATE DEFAULT NULL,
-        rent_status ENUM('pending', 'delivered', 'active', 'returned', 'overdue') DEFAULT 'pending',
+        rent_status ENUM('pending', 'delivered', 'active', 'returned', 'overdue', 'cancelled') DEFAULT 'pending',
         payment_method VARCHAR(50) NOT NULL,
         total_price DECIMAL(10, 2),
         FOREIGN KEY (user_id) REFERENCES users(id),
@@ -418,5 +418,23 @@ if ($product_id > 0) {
 }
 
 echo json_encode(["status" => "error", "message" => "Invalid product ID."]);
+
+*/
+
+
+
+/*
+
+NEXT STEP ADD USER PROFILE PAGE THAT SHOW CERTAIN FEATURES IF A USER IS LOGGED IN
+
+
+
+
+
+
+
+
+
+
 
 */

@@ -8,6 +8,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
 };
 
 // Set a minimum start date to be always 3 days from the current day the user chooses a start date
+// This is to specify the duration of product delivery or pickup
 $minStartDate = date('y-m-d', strtotime('+3 days'));
 ?>
 
@@ -18,6 +19,7 @@ $minStartDate = date('y-m-d', strtotime('+3 days'));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/index3.css">
 </head>
 <body>
     
@@ -54,7 +56,7 @@ $minStartDate = date('y-m-d', strtotime('+3 days'));
         <label>Rental Duration (days):</label><br>
         <input type="number" name="rental_days" min="1" required><br><br>
 
-        <p>
+        <p class="cart-total-price">
             <?php echo "£" . $_SESSION['cart-total-price']; ?>
         </p>
 
@@ -65,7 +67,7 @@ $minStartDate = date('y-m-d', strtotime('+3 days'));
         </select><br><br>
         <div>
 
-        <button id="comfirm-rental" name="comfirn-rental" type="submit">Confirm Rental</button>
+        <button id="comfirm-rental" name="comfirm-rental" type="submit">Confirm Rental</button>
     </form>
 
     <script>
