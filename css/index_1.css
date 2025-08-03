@@ -99,6 +99,77 @@ span.cart-counter {
     color: red;
 }
 
+#navbar-container .navbar .user-menu-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    transition: all ease-in-out 2s;
+}
+
+
+.user-menu-container span.user-initials {
+    background-color: black;
+    color: white;
+    padding: 15px 10px;
+    border-radius: 50%;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all ease-in-out .2s;
+}
+
+.user-menu-container span.user-initials:hover {
+    background-color: #e0dede;
+    color: black;
+}
+
+#navbar-container .profile-menu {
+    position: absolute;
+    background-color: #e0dede;
+    width: 200px;
+    padding: 20px 0px;
+    top: 50px;
+    left: -80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-15%);
+    opacity: 0;
+    z-index: -999;
+    transition: all ease-in-out .2s;
+}
+
+#navbar-container .user-menu-container:hover .profile-menu {
+    transform: translateY(0);
+    opacity: 1;
+    z-index: 1;
+}
+
+#navbar-container .profile-menu li {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: -20px;
+    transition: all ease-in-out .1s;
+    width: 100%;
+    padding: 8px 0px;
+}
+
+#navbar-container .profile-menu li:hover {
+    background-color: #c7c5c5;
+    color: #fff;
+}
+
+#navbar-container .profile-menu li svg {
+    height: 20px;
+    width: 20px;
+}
+
 /*--------------------------------------------*/
 
 /*----------- BANNER -------------------------*/

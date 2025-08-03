@@ -49,13 +49,6 @@ try {
         $quantity = $item['quantity'];
         $single_product_cost = $item['price_per_day'] * $quantity * $rental_days;
 
-        // foreach ($_SESSION['single-product-cost'] as $itemCost) {
-        //     if ($itemCost['product_id'] == $product_id) {
-        //         $single_product_cost = $itemCost['item_cost'];
-        //     }
-        // }
-
-
 
         // INSERTS INFO INTO ADDRESSES TABLE FOR EVERY RENTAL
         $addressInsert = "INSERT INTO Addresses (user_id, house_number, street_name, town, county, post_code)

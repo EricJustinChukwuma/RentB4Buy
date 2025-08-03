@@ -1,27 +1,53 @@
 <?php
-    require_once "../includes/config_session.inc.php";
+require_once "../includes/config_session.inc.php";
+require_once "../includes/dbh.inc.php";
+require_once "../includes/admin_auth.inc.php";
 
-    if (isset($_SESSION['user_id'])) {
-        $firstname = $_SESSION["user_firstname"];
-        $lastname = $_SESSION["user_lastname"];
+// 1. Pending Rentals
+$pending = $pdo->query("SELECT COUNT(*) AS pending_count FROM rentals WHERE rent_status = 'pending'")
+              ->fetchColumn();
 
-        $profile_initials = substr($firstname, 0, 1) . " " . substr($lastname, 0, 1);
+// 2. Most Rented Products
+$topProducts = $pdo->query("
+    SELECT products.product_name, COUNT(rentals.rental_id) AS rental_count
+    FROM rentals
+    JOIN products ON rentals.product_id = products.product_id
+    GROUP BY products.product_id
+    ORDER BY rental_count DESC
+    LIMIT 5
+")->fetchAll();
 
-        $_SESSION["user_initials"] = $profile_initials;
-    };
+// 3. Revenue Over Time
+$revenue = $pdo->query("
+    SELECT DATE_FORMAT(request_date, '%Y-%m') AS month, SUM(total_price) AS total_revenue
+    FROM rentals
+    GROUP BY month
+    ORDER BY month DESC
+")->fetchAll();
 
-    // $_SESSION["user_initials"] = $profile_initials;
-    
-    
+// 4. Rentals Per User
+$userRentals = $pdo->query("
+    SELECT users.username, COUNT(rentals.rental_id) AS rental_count
+    FROM rentals
+    JOIN users ON rentals.user_id = users.id
+    GROUP BY users.id
+    ORDER BY rental_count DESC
+")->fetchAll();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rent B4 Buy/Home</title>
+    <title>Admin Analytics Dashboard</title>
     <link rel="stylesheet" href="../css/index_1.css">
+    <style>
+        body { font-family: Arial; }
+        h2 { margin-top: 2rem; }
+        table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+        table, th, td { border: 1px solid #ccc; }
+        th, td { padding: 10px; text-align: left; }
+        .stat { font-size: 1.5rem; margin: 1rem 0; }
+    </style>
 </head>
 <body>
     <header id="header" class="section">
@@ -61,7 +87,6 @@
                     </div>
                 <?php endif ?>
 
-
                 <?php
                     if (isset($_SESSION['user_id']) && isset($_SESSION["user_initials"])) :
                 ?>
@@ -83,10 +108,10 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M224 160C241.7 160 256 145.7 256 128C256 110.3 241.7 96 224 96L160 96C107 96 64 139 64 192L64 448C64 501 107 544 160 544L224 544C241.7 544 256 529.7 256 512C256 494.3 241.7 480 224 480L160 480C142.3 480 128 465.7 128 448L128 192C128 174.3 142.3 160 160 160L224 160zM566.6 342.6C579.1 330.1 579.1 309.8 566.6 297.3L438.6 169.3C426.1 156.8 405.8 156.8 393.3 169.3C380.8 181.8 380.8 202.1 393.3 214.6L466.7 288L256 288C238.3 288 224 302.3 224 320C224 337.7 238.3 352 256 352L466.7 352L393.3 425.4C380.8 437.9 380.8 458.2 393.3 470.7C405.8 483.2 426.1 483.2 438.6 470.7L566.6 342.7z"/></svg>
                             </li>
                         </ul>
-                        <h3>Hi, <?= $firstname . " " . $lastname?></h3>
+                        <h3>Hi, <?= $_SESSION["user_firstname"] . " " . $_SESSION["user_lastname"]?></h3>
                     </div>
                 <?php endif; ?>
-                
+
                 
         
                 <?php
@@ -103,161 +128,46 @@
         </nav>
     </header>
 
+    <div>
+        <h1>📈 Admin Dashboard</h1>
 
-    <main id="banner-container">
-        <div class="banner">
-            <h1>Experience Products Before You Commit</h1>
-            <p>Transform your shopping route. Rent-before-buy let's you experience products before you decide. Get a first hand experience of products before you commit to purchasing. Our products are offered at the most affordable rental prices. Spend a day with the product, a week or a month and get a feel of it and lets us know what you think</p>
-            <a href="">Get Started</a>
+        <div class="stat">
+            🔄 <strong>Pending Rentals:</strong> <?= $pending ?>
         </div>
-    </main>
 
-    <section id="offers-section">
-        <div class="offers-container">
-            <h1>WHAT WE OFFER</h1>
-            <div>
-                <div class="offer">
-                    <h3>High quality products</h3>
-                    <p>We provide high quality tech gadgets with certified quality check</p>
-                </div>
-                <div class="offer">
-                    <h3>No hidden cost</h3>
-                    <p>No extra hidden fees for any transaction. Never pay more than 20% product price for any rental.</p>
-                </div>
-                <div class="offer">
-                    <h3>Damage protection</h3>
-                    <p>You are covered for damages to product by up to 70% of the product cost</p>
-                </div>
-                <div class="offer">
-                    <h3>Best deals you can trust</h3>
-                    <p>Pay less for a longer rental period above 1 month</p>
-                </div>
-            </div>
-            <div class="line"></div>
-        </div>
-    </section>
+        <h2>🔝 Most Rented Products</h2>
+        <table>
+            <tr><th>Product</th><th>Rentals</th></tr>
+            <?php foreach ($topProducts as $product): ?>
+                <tr>
+                    <td><?= htmlspecialchars($product['product_name']) ?></td>
+                    <td><?= $product['rental_count'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
 
+        <h2>💰 Revenue Over Time (Monthly)</h2>
+        <table>
+            <tr><th>Month</th><th>Revenue (£)</th></tr>
+            <?php foreach ($revenue as $row): ?>
+                <tr>
+                    <td><?= $row['month'] ?></td>
+                    <td><?= number_format($row['total_revenue'], 2) ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
 
-    <section>
-        <div>
-            <h1>Top Rentals</h1>
-            <div>
-                <img src="" alt="img of most rented and bought app">
-                <img src="" alt="img of most rented and bought app">
-                <img src="" alt="img of most rented and bought app">
-                <img src="" alt="img of most rented and bought app">
-            </div>
-        </div>
-    </section>
+        <h2>👤 Rentals Per User</h2>
+        <table>
+            <tr><th>User</th><th>Total Rentals</th></tr>
+            <?php foreach ($userRentals as $user): ?>
+                <tr>
+                    <td><?= htmlspecialchars($user['username']) ?></td>
+                    <td><?= $user['rental_count'] ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
 
-    <section id="rent-section">
-        <div class="rent-container">
-            <h1>How To Rent</h1>
-            <div>
-                <div class="rent-steps">
-                    <span>1</span>
-                    <div>
-                        <p>Register</p> <br>
-                        <p>with</p> <br>
-                        <p>us</p>
-                    </div>
-                </div>
-
-                <div class="rent-steps">
-                    <span>2</span>
-                    <div>
-                        <p>Browse and</p> <br>
-                        <p>choose a</p> <br>
-                        <p>product</p>
-                    </div>
-                </div>
-
-                <div class="rent-steps">
-                    <span>3</span>
-                    <div>
-                        <p>Proceed</p> <br>
-                        <p>to</p> <br>
-                        <p>checkout</p>
-                    </div>
-                </div>
-
-                <div class="rent-steps">
-                    <span>4</span>
-                    <div>
-                        <p>Sit and</p> <br>
-                        <p>wait for</p> <br>
-                        <p>delivery</p>
-                    </div>
-                </div>
-            </div>
-            <div class="line"></div>
-        </div>  
-    </section>
-
-    <footer>
-        <div class="footer-container">
-            <a class="footer-logo" href="index.html">
-                <span>Rent</span> <br>
-                <span>b4</span> <br>
-                <span>Buy</span>
-            </a>
-            <div>
-                <h5>The Company</h5>
-                <a href="">About the company</a>
-                <a href="">Help Center</a>
-                <a href="">Reviews</a>
-            </div>
-            <div>
-                <h5>Info</h5>
-                <a href="">How it works</a>
-                <a href="">Terms & Conditions</a>
-                <a href="">FAQ's</a>
-                <a href="">Legal</a>
-                <a href="">Privacy Policy</a>
-            </div>
-        </div>
-    </footer>
 </body>
 </html>
-
-<!-- <div class="category-container">
-    <div class="category">
-        <a href="">Gadgets</a>
-        <div>
-            <ul>
-                <li>Phones</li>
-                <li>Laptops</li>
-                <li>Desktops</li>
-                <li>Tablets</li>
-                <li>Phones</li>
-            </ul>
-        </div>
-    </div>
-    <div class="category">
-        <a href="">Furnitures</a>
-        <div>
-            <ul>
-                <li>Chairs</li>
-                <li>Tables</li>
-                <li>WardRobes</li>
-                <li>Soafers</li>
-                <li>Bed Frames</li>
-            </ul>
-        </div>
-    </div>
-    <div class="category">
-        <a href="">Clothings</a>
-        <div>
-            <ul>
-                <li>Shirts</li>
-                <li>Trousers</li>
-                <li>Shorts</li>
-                <li>Shoes</li>
-                <li>Hats</li>
-                <li>Jackets</li>
-            </ul>
-        </div>
-    </div>
-
-    
-</div> -->

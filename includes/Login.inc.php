@@ -66,9 +66,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ////////////////////////////////////////////////////////////
         // SHOULD BE DIRECTED TO THE USER-PROFILE PAGE or ADMIN PAGE BASED ON THE ROLE_ID
         if(isset($_SESSION["user_role_id"]) && $_SESSION["user_role_id"] === 2) {
-            header("Location: ../html/index.php?login=success");
-        } else {
-            header("Location: ../html/about.php?login=success");
+            $_SESSION['is_admin'] = false;
+            header("Location: ../html/index.php?User_login=success");
+        } elseif (isset($_SESSION["user_role_id"]) && $_SESSION["user_role_id"] === 1) {
+            $_SESSION['is_admin'] = true;
+            header("Location: ../html/index.php?Admin_login=success");
         }
         // header("Location: ../html/index.php?login=success");
         ////////////////////////////////////////////////////////////

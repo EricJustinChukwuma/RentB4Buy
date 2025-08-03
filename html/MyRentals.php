@@ -46,6 +46,7 @@ $rentals = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <?php if (empty($rentals)): ?>
         <p>You have not rented any products yet.</p>
+        <a href="./product_page.php">Rent Now</a>
     <?php else: ?>
         <?php foreach ($rentals as $rental): ?>
             <div class="rental-card">

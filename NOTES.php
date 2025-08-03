@@ -423,6 +423,9 @@ echo json_encode(["status" => "error", "message" => "Invalid product ID."]);
 
 
 
+
+
+
 /*
 
 NEXT STEP ADD USER PROFILE PAGE THAT SHOW CERTAIN FEATURES IF A USER IS LOGGED IN

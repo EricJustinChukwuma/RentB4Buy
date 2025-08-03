@@ -37,7 +37,7 @@ function set_user(object $pdo, string $username, string $firstname, string $last
     $stmt = $pdo->prepare($query);
 
     $admin_id = 1;
-    $user_id = 2;
+    $user_role_id = 2;
 
     // ENSURES IT COST MORE TO RUN THIS HASH FUNCTION AND ALSO PREVENTS BRUTE FORCE ATTACK TO THE WEBSITE
     $options = [
@@ -52,7 +52,7 @@ function set_user(object $pdo, string $username, string $firstname, string $last
     $stmt->bindParam(":lastname", $lastname);
     $stmt->bindParam(":email", $email);
     $stmt->bindParam(":pwd", $hashedPwd);
-    $stmt->bindParam(":role_id", $user_id);
+    $stmt->bindParam(":role_id", $admin_id);
 
     $stmt->execute();
 }

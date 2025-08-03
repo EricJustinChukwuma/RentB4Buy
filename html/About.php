@@ -47,12 +47,32 @@
                     </span>
                 </div>
 
+                <?php
+                    if (isset($_SESSION['user_id']) && isset($_SESSION["user_initials"])) :
+                ?>
+                    <div class="user-menu-container">
+                        <span class="user-initials-container">
+                            <?= $_SESSION["user_initials"]; ?>
+                        </span>
+                        <ul class="profile-menu">
+                            <li><a href="">Profile</a></li>
+                            <li><a href="">Settings</a></li>
+                            <li><a href="">Logout</a></li>
+                        </ul>
+                    </div>
+                <?php endif; ?>
+
                 
         
-                <div class="signup-container">
-                    <a href="../Signup.php">Signup</a>
-                    <a href="../Login.php">Login</a>
-                </div>
+                <?php
+                    if (!isset($_SESSION['user_id'])) :
+                ?>
+                    <div class="signup-container">
+                        <a href="../Signup.php">Signup</a>
+                        <a href="../Login.php">Login</a>
+                    </div>
+
+                <?php endif; ?>
             </div>
 
         </nav>
