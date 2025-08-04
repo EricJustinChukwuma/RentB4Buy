@@ -21,14 +21,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rent B4 Buy/Home</title>
-    <link rel="stylesheet" href="../css/index_1.css">
+    <link rel="stylesheet" href="../css/index_3.css">
 </head>
 <body>
     <header id="header" class="section">
         <nav id="navbar-container">
 
             <div class="logo-container">
-                <a class="logo" href="../html/index.html">
+                <a class="logo" href="../html/index.php">
                     <span>Rent</span>
                     <span>b4</span>
                     <span>Buy</span>
@@ -100,6 +100,31 @@
                 <?php endif; ?>
             </div>
 
+            <span id="sidenav-open">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M96 160C96 142.3 110.3 128 128 128L512 128C529.7 128 544 142.3 544 160C544 177.7 529.7 192 512 192L128 192C110.3 192 96 177.7 96 160zM96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320zM544 480C544 497.7 529.7 512 512 512L128 512C110.3 512 96 497.7 96 480C96 462.3 110.3 448 128 448L512 448C529.7 448 544 462.3 544 480z"/></svg>
+            </span>
+
+
+            <div id="sidenav" class="sidenav">
+                <button id="close-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+                </button>
+                <a href="ProfilePage.php" id="view-profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M463 448.2C440.9 409.8 399.4 384 352 384L288 384C240.6 384 199.1 409.8 177 448.2C212.2 487.4 263.2 512 320 512C376.8 512 427.8 487.3 463 448.2zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 336C359.8 336 392 303.8 392 264C392 224.2 359.8 192 320 192C280.2 192 248 224.2 248 264C248 303.8 280.2 336 320 336z"/></svg>
+                    <span>View Profile</span>
+                </a>
+                <a href="index.php">Home</a>
+                <a href="product_page.php">Products</a>
+                <a href="about.php">About</a>
+                <a href="How_it_works.php">How it works</a>
+                <a href="contact.php">Contact Us</a>
+
+                <div class="sidenav-signup">
+                    <a href="../Signup.php">Signup</a>
+                    <a href="../Login.php">Login</a>
+                </div>
+            </div>
+
         </nav>
     </header>
 
@@ -108,7 +133,7 @@
         <div class="banner">
             <h1>Experience Products Before You Commit</h1>
             <p>Transform your shopping route. Rent-before-buy let's you experience products before you decide. Get a first hand experience of products before you commit to purchasing. Our products are offered at the most affordable rental prices. Spend a day with the product, a week or a month and get a feel of it and lets us know what you think</p>
-            <a href="">Get Started</a>
+            <a href="<?php echo isset($_SESSION['user_id']) && isset($_SESSION['user_role_id']) ? '../html/product_page.php' :  '../Login.php'?>">Get Started</a>
         </div>
     </main>
 
@@ -138,7 +163,7 @@
     </section>
 
 
-    <section>
+    <!-- <section>
         <div>
             <h1>Top Rentals</h1>
             <div>
@@ -148,7 +173,7 @@
                 <img src="" alt="img of most rented and bought app">
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section id="rent-section">
         <div class="rent-container">
@@ -217,47 +242,12 @@
             </div>
         </div>
     </footer>
+
+    <script src="../js/index.js"></script>
+    <script>
+        
+
+
+    </script>
 </body>
 </html>
-
-<!-- <div class="category-container">
-    <div class="category">
-        <a href="">Gadgets</a>
-        <div>
-            <ul>
-                <li>Phones</li>
-                <li>Laptops</li>
-                <li>Desktops</li>
-                <li>Tablets</li>
-                <li>Phones</li>
-            </ul>
-        </div>
-    </div>
-    <div class="category">
-        <a href="">Furnitures</a>
-        <div>
-            <ul>
-                <li>Chairs</li>
-                <li>Tables</li>
-                <li>WardRobes</li>
-                <li>Soafers</li>
-                <li>Bed Frames</li>
-            </ul>
-        </div>
-    </div>
-    <div class="category">
-        <a href="">Clothings</a>
-        <div>
-            <ul>
-                <li>Shirts</li>
-                <li>Trousers</li>
-                <li>Shorts</li>
-                <li>Shoes</li>
-                <li>Hats</li>
-                <li>Jackets</li>
-            </ul>
-        </div>
-    </div>
-
-    
-</div> -->

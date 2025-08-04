@@ -25,7 +25,7 @@ $minStartDate = date('y-m-d', strtotime('+3 days'));
     
     <h2>Rental Checkout</h2>
 
-    <form action="../includes/process_checkout.php" method="POST">
+    <form action="../includes/Create_Checkout_Session.php" method="POST">
         <h3>Order Summary</h3>
         <ul>
             <?php foreach ($_SESSION['cart'] as $item): ?>
