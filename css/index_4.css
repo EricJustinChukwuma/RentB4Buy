@@ -16,6 +16,10 @@ body {
     padding-inline: 120px;
 }
 
+.active {
+    background-color: #e0dede;
+}
+
 /*---- HEADER - NAVBAR STYLE --------*/
 #header {
     width: 100%;
@@ -25,7 +29,6 @@ body {
     z-index: 999;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
     background-color: #fff;
-    /* position: relative; */
 }
 
 #header #navbar-container {
@@ -57,13 +60,17 @@ body {
     text-decoration: none;
     color: #292828;
     font-weight: 600;
-    background-color: transparent;
     padding: 12px 25px;
     border-radius: 25px;
     transition: all ease-in-out .2s;
 }
 
+/* #navbar-container .navbar a.active {
+    background-color: #e0dede;
+} */
+
 #navbar-container .navbar .nav-links a:hover, 
+#navbar-container .navbar .nav-links a.active,
 #navbar-container .navbar .signup-container a:hover {
     background-color: #e0dede;
 }
@@ -173,29 +180,31 @@ span.cart-counter {
 }
 
 /*----------SIDENAV STYLING --------------------*/
-#sidenav {
-    display: flex;
+.sidenav {
+    display: none;
     flex-direction: column;
-    background-color: rgb(163, 157, 157);
-    width: 350px;
+    background-color: rgba(163, 157, 157, 0.8);
+    width: 300px;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
+    backdrop-filter: blur(10px);
     padding-top: 100px;
     transform: translateX(100%);
-    z-index: 999
+    z-index: 999;
+    transition: transform 0.3s ease;
+}
+
+.sidenav.sidenav-open-menu {
+    transform: translateX(0%);
 }
 
 #sidenav-open {
     height: 30px;
     width: 30px;
     cursor: pointer;
-    /* display: none; */
-}
-
-.sidenav.sidenav-open {
-    transform: translateX(0%);
+    display: none;
 }
 
 #sidenav-menu-open svg {
@@ -231,7 +240,7 @@ span.cart-counter {
     padding: 20px 20px;
     text-decoration: none;
     color: black;
-    font-size: 1.2em;
+    font-size: 1em;
     transition: all ease-in-out .1s;
 }
 
@@ -249,6 +258,9 @@ span.cart-counter {
 #banner-container {
     padding-top: 250px;
     padding-inline: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #banner-container .banner {
@@ -304,8 +316,6 @@ span.cart-counter {
 }
 
 .offers-container > div {
-    /* display: flex;
-    gap: 50px; */
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -347,7 +357,7 @@ span.cart-counter {
 } 
 /*-------------------------------------*/
 
-/*----------------------------------*/
+/*----------------RENT STEPS SECTION------------------*/
 #rent-section {
     display: flex;
     width: 100%;
@@ -380,7 +390,6 @@ span.cart-counter {
     display: flex;
     flex-direction: column;
     gap: 60px;
-    height: 550px;
 }
 
 .rent-container h1 {
@@ -470,19 +479,268 @@ footer {
 
 
 @media only screen and (max-width: 576px) {
+    #header {
+        padding-inline: 20px;
+    }
+
+    #header #navbar-container {
+        padding-inline: 20px;
+        padding-block: 40px;
+    }
+
     #navbar-container .navbar {
         display: none;
-        justify-content: space-between;
+    }
+
+    .sidenav {
+        display: flex;
+    }
+
+    #sidenav-open {
+        display: flex;
+    }
+
+
+    /* BANNER */
+    #banner-container {
+        padding-top: 150px;
+        padding-inline: 20px;
+    }
+    
+    #banner-container .banner {
+        padding: 20px 40px;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        width: 70%;
-        gap: 40px
+        justify-content: center;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    #banner-container .banner h1 {
+        width: 100%;
+        font-size: 1.4em;
+    }
+    
+    #banner-container .banner p {
+        width: 100%;
+        line-height: 1.5;
+        font-size: .8em;
+    }
+    
+    #banner-container .banner a {
+        padding: 10px 25px;
+        font-size: .9em;
+        margin-left: 60px;
+        position: relative;
+    }
+
+    /* OFFERS */
+    #offers-section {
+        padding-inline: 20px;
+    }
+    
+    .offers-container {
+        gap: 30px;
+    }
+    
+    .offers-container > div {
+        gap: 30px;
+    }
+    
+    .offers-container .offer {
+        padding: 40px 40px 60px 40px;
+    }
+    
+    .offers-container h1 {
+        font-size: 1.2em;
+    }
+    
+    .offers-container .offer h3 {
+        font-size: 1.2em;
+        
+    }
+    
+    .offers-container .offer p {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+
+    /*----------------RENT STEPS SECTION------------------*/
+    #rent-section {
+        margin-top: 100px;
+        padding-inline: 20px;
+    }
+
+    .rent-container {
+        gap: 40px;
+    }
+
+    .rent-container > div {
+        gap: 20px;
+    }
+
+    .rent-steps {
+        padding: 20px 40px;
+        gap: 30px;
+    }
+
+    .rent-container h1 {
+        font-size: 1.8em;
+    }
+
+    .rent-steps > span {
+        width: 40px;
+        height: 40px;
+        font-size: 1.4em;
+    }
+
+    .rent-steps div {
+        gap: 10px;
+    }
+
+    .rent-steps p {
+        font-size: 1.4em;
     }
 }
 
-@media only screen and (max-width: 799px) {
 
+
+
+
+@media only screen and (max-width: 799px) {
+    #header {
+        padding-inline: 20px;
+    }
+
+    #navbar-container .navbar {
+        display: none;
+    }
+
+    .sidenav {
+        display: flex;
+    }
+
+    #sidenav-open {
+        display: flex;
+    }
+
+
+    /* BANNER */
+    #banner-container {
+        padding-top: 150px;
+        padding-inline: 40px;
+    }
+    
+    #banner-container .banner {
+        padding: 20px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    #banner-container .banner h1 {
+        width: 100%;
+        font-size: 1.4em;
+    }
+    
+    #banner-container .banner p {
+        width: 100%;
+        line-height: 1.5;
+        font-size: .9em;
+    }
+    
+    #banner-container .banner a {
+        padding: 10px 25px;
+        font-size: .9em;
+        margin-left: 60px;
+        position: relative;
+    }
+
+    /* OFFERS */
+    #offers-section {
+        padding-inline: 20px;
+    }
+    
+    .offers-container {
+        gap: 30px;
+    }
+    
+    .offers-container > div {
+        gap: 30px;
+    }
+    
+    .offers-container .offer {
+        padding: 40px 40px 60px 40px;
+    }
+    
+    .offers-container h1 {
+        font-size: 1.8em;
+    }
+    
+    .offers-container .offer h3 {
+        font-size: 1.2em;
+        
+    }
+    
+    .offers-container .offer p {
+        font-size: 1em;
+        line-height: 1.5;
+    }
 }
 
 @media only screen and (max-width: 992px) {
+    #header {
+        padding-inline: 20px;
+    }
 
+    #navbar-container .navbar {
+        display: none;
+    }
+
+    .sidenav {
+        display: flex;
+    }
+
+    #sidenav-open {
+        display: flex;
+    }
+
+
+    /* BANNER */
+    #banner-container {
+        padding-top: 150px;
+        padding-inline: 20px;
+    }
+    
+    #banner-container .banner {
+        padding: 20px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    #banner-container .banner h1 {
+        width: 100%;
+        font-size: 1.6em;
+    }
+    
+    #banner-container .banner p {
+        width: 100%;
+        line-height: 1.5;
+        font-size: 1.1em;
+    }
+    
+    #banner-container .banner a {
+        padding: 10px 25px;
+        font-size: 1.1em;
+        margin-left: 60px;
+        position: relative;
+    }
 }
