@@ -9,14 +9,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rent B4 Buy/Home</title>
-    <link rel="stylesheet" href="../css/index_1.css">
+    <link rel="stylesheet" href="../css/index_3.css">
 </head>
 <body>
     <header id="header" class="section">
         <nav id="navbar-container">
 
             <div class="logo-container">
-                <a class="logo" href="../html/index.html">
+                <a class="logo" href="../html/index.php">
                     <span>Rent</span>
                     <span>b4</span>
                     <span>Buy</span>
@@ -71,7 +71,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M224 160C241.7 160 256 145.7 256 128C256 110.3 241.7 96 224 96L160 96C107 96 64 139 64 192L64 448C64 501 107 544 160 544L224 544C241.7 544 256 529.7 256 512C256 494.3 241.7 480 224 480L160 480C142.3 480 128 465.7 128 448L128 192C128 174.3 142.3 160 160 160L224 160zM566.6 342.6C579.1 330.1 579.1 309.8 566.6 297.3L438.6 169.3C426.1 156.8 405.8 156.8 393.3 169.3C380.8 181.8 380.8 202.1 393.3 214.6L466.7 288L256 288C238.3 288 224 302.3 224 320C224 337.7 238.3 352 256 352L466.7 352L393.3 425.4C380.8 437.9 380.8 458.2 393.3 470.7C405.8 483.2 426.1 483.2 438.6 470.7L566.6 342.7z"/></svg>
                             </li>
                         </ul>
-                        <h3>Hi, <?= $_SESSION['user_firstname'] . " " . $_SESSION['user_lastname']?></h3>
+                        <h3>Hi,  <?= $_SESSION['user_firstname'] . " " . $_SESSION["user_lastname"] ?></h3>
                     </div>
                 <?php endif; ?>
                 
@@ -88,15 +88,40 @@
                 <?php endif; ?>
             </div>
 
+            <span id="sidenav-open">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M96 160C96 142.3 110.3 128 128 128L512 128C529.7 128 544 142.3 544 160C544 177.7 529.7 192 512 192L128 192C110.3 192 96 177.7 96 160zM96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320zM544 480C544 497.7 529.7 512 512 512L128 512C110.3 512 96 497.7 96 480C96 462.3 110.3 448 128 448L512 448C529.7 448 544 462.3 544 480z"/></svg>
+            </span>
+
+
+            <div id="sidenav" class="sidenav">
+                <button id="close-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+                </button>
+                <a href="ProfilePage.php" id="view-profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M463 448.2C440.9 409.8 399.4 384 352 384L288 384C240.6 384 199.1 409.8 177 448.2C212.2 487.4 263.2 512 320 512C376.8 512 427.8 487.3 463 448.2zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 336C359.8 336 392 303.8 392 264C392 224.2 359.8 192 320 192C280.2 192 248 224.2 248 264C248 303.8 280.2 336 320 336z"/></svg>
+                    <span>View Profile</span>
+                </a>
+                <a href="index.php">Home</a>
+                <a href="product_page.php">Products</a>
+                <a href="about.php">About</a>
+                <a href="How_it_works.php">How it works</a>
+                <a href="contact.php">Contact Us</a>
+
+                <div class="sidenav-signup">
+                    <a href="../Signup.php">Signup</a>
+                    <a href="../Login.php">Login</a>
+                </div>
+            </div>
+
         </nav>
     </header>
 
 
     <main id="banner-container">
         <div class="banner">
-            <h1>Experience Products Before You Commit</h1>
-            <p>Transform your shopping route. Rent-efore-buy let's you experience products before you decide. Get a first hand experience of products b4 you commit to purchasing. Our Products are offered at the most affordable prices. Spend a day with the product, a week or a month.</p>
-            <a href="">Get Started</a>
+            <h1>What we are about</h1>
+            <p>We are an organisation that aims to promote customer satisfaction and trust. We aim to achieve this through providing our customers with products they can trust at an affordable rental price which offers them a firsthand experience of our products with an option to buy if they feel the product is what they need. This will help us to improve customer satisfaction as well as reducing or mitigating some of the risk encountered in today's mode of E-Commerce platforms.</p>
+            <a href="">Find Out More</a>
         </div>
     </main>
 
@@ -148,5 +173,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="../js/index.js"></script>
 </body>
 </html>

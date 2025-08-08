@@ -1,5 +1,6 @@
 <?php
     require_once "../includes/config_session.inc.php";
+    require_once "../includes/dbh.inc.php";
 
     if (isset($_SESSION['user_id'])) {
         $firstname = $_SESSION["user_firstname"];
@@ -11,7 +12,6 @@
     };
 
     // $_SESSION["user_initials"] = $profile_initials;
-    
     
 ?>
 
@@ -37,7 +37,7 @@
 
             <div class="navbar">
                 <div class="nav-links">
-                    <a href="../html/index.php">Home</a>
+                    <a class="active" href="../html/index.php">Home</a>
                     <a href="../html/product_page.php">Products</a>
                     <a href="../html/About.php">About</a>
                     <a href="../html/How_it_works.php">How it works</a>
@@ -163,17 +163,22 @@
     </section>
 
 
-    <!-- <section>
+    <section>
         <div>
             <h1>Top Rentals</h1>
             <div>
+                <!-- <img src="" alt="img of most rented and bought app">
                 <img src="" alt="img of most rented and bought app">
                 <img src="" alt="img of most rented and bought app">
-                <img src="" alt="img of most rented and bought app">
-                <img src="" alt="img of most rented and bought app">
+                <img src="" alt="img of most rented and bought app"> -->
+                <?php
+                    foreach($topProducts as $topProduct) {
+                ?>
+                    <img src="<?php $topProduct['product_image'] ?>" alt="">
+                <?php } ?>
             </div>
         </div>
-    </section> -->
+    </section>
 
     <section id="rent-section">
         <div class="rent-container">
@@ -244,10 +249,5 @@
     </footer>
 
     <script src="../js/index.js"></script>
-    <script>
-        
-
-
-    </script>
 </body>
 </html>

@@ -9,7 +9,7 @@ $pending = $pdo->query("SELECT COUNT(*) AS pending_count FROM rentals WHERE rent
 
 // 2. Most Rented Products
 $topProducts = $pdo->query("
-    SELECT products.product_name, COUNT(rentals.rental_id) AS rental_count
+    SELECT products.product_name, products.product_image, COUNT(rentals.rental_id) AS rental_count
     FROM rentals
     JOIN products ON rentals.product_id = products.product_id
     GROUP BY products.product_id

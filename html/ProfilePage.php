@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rent B4 Buy/Home</title>
-    <link rel="stylesheet" href="../css/index_1.css">
+    <link rel="stylesheet" href="../css/index_3.css">
     <link rel="stylesheet" href="../css/Profile.css">
 </head>
 <body>
@@ -191,7 +191,7 @@
 
     <footer>
         <div class="footer-container">
-            <a class="footer-logo" href="index.html">
+            <a class="footer-logo" href="./index.php">
                 <span>Rent</span> <br>
                 <span>b4</span> <br>
                 <span>Buy</span>
@@ -212,5 +212,7 @@
             </div>
         </div>
     </footer>
+
+    <script src="../js/index.js"></script>
 </body>
 </html>

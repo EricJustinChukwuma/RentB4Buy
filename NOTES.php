@@ -181,6 +181,34 @@
     );
     ///////////////////////////////
 
+    // CARDS TABLE SQL ///
+    CREATE TABLE cards (
+        card_id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        cardholder_name VARCHAR(255),
+        card_number VARCHAR(16),
+        expiry_date VARCHAR(7),
+        cvv VARCHAR(4),
+        FOREIGN KEY (user_id) REFERENCES users(id)
+    );
+    ////////////////////////
+
+
+    /// PAYMENTS TABLE SQL ///
+    CREATE TABLE payments (
+        payment_id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        rental_id INT NOT NULL,
+        amount DECIMAL(10,2) NOT NULL,
+        payment_method ENUM('card', 'paypal', 'bank_transfer') NOT NULL,
+        payment_status ENUM('pending', 'completed', 'failed') DEFAULT 'pending',
+        payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (user_id) REFERENCES users(id),
+        FOREIGN KEY (rental_id) REFERENCES rentals(rental_id)
+    );
+    //////////////////////////////
+
+
 
 
 
