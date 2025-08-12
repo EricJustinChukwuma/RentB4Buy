@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rent B4 Buy/Home</title>
-    <link rel="stylesheet" href="../css/index_3.css">
+    <link rel="stylesheet" href="../css/index_5.css">
 </head>
 <body>
     <header id="header" class="section">
@@ -27,7 +27,7 @@
                 <div class="nav-links">
                     <a href="../html/index.php">Home</a>
                     <a href="../html/product_page.php">Products</a>
-                    <a href="../html/About.php">About</a>
+                    <a class="active" href="../html/About.php">About</a>
                     <a href="../html/How_it_works.php">How it works</a>
                     <a href="../html/Contact.php">Contact Us</a>
                 </div>
@@ -121,7 +121,7 @@
         <div class="banner">
             <h1>What we are about</h1>
             <p>We are an organisation that aims to promote customer satisfaction and trust. We aim to achieve this through providing our customers with products they can trust at an affordable rental price which offers them a firsthand experience of our products with an option to buy if they feel the product is what they need. This will help us to improve customer satisfaction as well as reducing or mitigating some of the risk encountered in today's mode of E-Commerce platforms.</p>
-            <a href="">Find Out More</a>
+            <a href="../html/How-It-Works.php">Find Out More</a>
         </div>
     </main>
 

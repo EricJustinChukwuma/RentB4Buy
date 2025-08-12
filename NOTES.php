@@ -203,8 +203,10 @@
         payment_method ENUM('card', 'paypal', 'bank_transfer') NOT NULL,
         payment_status ENUM('pending', 'completed', 'failed') DEFAULT 'pending',
         payment_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+        card_id INT NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users(id),
-        FOREIGN KEY (rental_id) REFERENCES rentals(rental_id)
+        FOREIGN KEY (rental_id) REFERENCES rentals(rental_id),
+        FOREIGN KEY (card_id) REFERENCES cards(card_id),
     );
     //////////////////////////////
 
@@ -460,6 +462,18 @@ NEXT STEP ADD USER PROFILE PAGE THAT SHOW CERTAIN FEATURES IF A USER IS LOGGED I
 
 
 
+        $query = "INSERT INTO rentals (user_id, address_id, product_id, quantity, start_date, end_date, rent_status, total_price)
+                VALUES (:user_id, :address_id, :product_id, :quantity, :start_date, :end_date, 'pending', :total_price)";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':address_id', $address_id);
+        $stmt->bindParam(':product_id', $product_id);
+        $stmt->bindParam(':quantity', $quantity);
+        $stmt->bindParam(':start_date', $start_date);
+        $stmt->bindParam(':end_date', $end_date);
+        $stmt->bindParam(':total_price', $productTotal);
+
+        $stmt->execute();
 
 
 

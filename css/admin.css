@@ -1,0 +1,120 @@
+.admin-products-main {
+    padding-block: 220px;
+    padding-inline: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    gap: 10px
+}
+
+.admin-products-main > a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #00c853;
+    padding: 10px 20px;
+}
+
+.admin-products-main table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-products-main table tbody tr td img {
+    width: 50px;
+    height: 50px;
+}
+
+.admin-products-main table thead tr th {
+    padding: 20px;
+}
+
+.admin-products-main table tbody tr td {
+    padding: 10px 20px;
+}
+
+.action {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+.action a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+tr td a svg {
+    height: 20px;
+    width: 20px;
+}
+
+
+.admin-rentals-main {
+    width: 100%;
+    padding-block: 220px 100px;
+    padding-inline: 120px;
+    overflow-x: auto;
+}
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin-top: 20px; 
+}
+th, td { 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+}
+th {
+    padding: 30px 20px;
+}
+.filter-bar { 
+    margin-bottom: 20px; 
+}
+
+td img {
+    width: 50px;
+    height: 60px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.filter-bar button {
+    background-color: #00c853;
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+/* EDIT PRODUCT ---------------*/
+.edit-product-main {
+    width: 100%;
+    padding-block: 220px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.edit-product-main form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    padding: 40px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+}
+
+.edit-product-main form button {
+    background-color: #00c853;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}

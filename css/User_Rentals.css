@@ -1,0 +1,54 @@
+.user-rentals-conatiner {
+    width: 100%;
+    padding-block: 220px 100px;
+    padding-inline: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-x: auto;
+}
+
+.user-rentals-conatiner table {
+    width: 100%;
+}
+
+.user-rentals-conatiner table thead tr th {
+    padding: 30px 20px;
+}
+
+.user-rentals-conatiner table tbody tr td {
+    padding: 10px 20px;
+}
+
+.user-rentals-conatiner table tbody tr td:first-child {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-rentals-conatiner table tbody tr td img {
+    height: 60px;
+    width: 50px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+@media only screen and (max-width: 576px) {
+    .user-rentals-conatiner {
+        padding-block: 160px 50px;
+        padding-inline: 20px;
+    }
+}
+
+@media only screen and (max-width: 799px) {
+    .user-rentals-conatiner {
+        padding-block: 160px 50px;
+        padding-inline: 20px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .user-rentals-conatiner {
+        padding-block: 160px 50px;
+        padding-inline: 20px;
+    }
+}

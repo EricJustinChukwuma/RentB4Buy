@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/index_3.css">
+    <link rel="stylesheet" href="./css/index_4.css">
     <link rel="stylesheet" href="./css/login.css">
 </head>
 <body>
@@ -84,7 +84,7 @@
                     if (!isset($_SESSION['user_id'])) :
                 ?>
                     <div class="signup-container">
-                        <a href="./Signup.php">Signup</a>
+                        <a class="active" href="./Signup.php">Signup</a>
                         <a href="./Login.php">Login</a>
                     </div>
 

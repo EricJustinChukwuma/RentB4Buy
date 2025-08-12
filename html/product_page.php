@@ -23,7 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- <link rel="stylesheet" href="../css/index_product_page.css"> -->
-    <link rel="stylesheet" href="../css/Product.css">
+    <link rel="stylesheet" href="../css/product_index.css">
 </head>
 <body data-logged-in="<?php echo $isLoggedIn ? 'true' : 'false' ?>">
     <header id="header" class="section">
@@ -108,7 +108,7 @@
                 <?php endif; ?>
                 
                 
-        
+                
                 <?php
                     if (!isset($_SESSION['user_id'])) :
                 ?>

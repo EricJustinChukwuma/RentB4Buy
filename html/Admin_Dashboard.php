@@ -3,9 +3,8 @@ require_once "../includes/config_session.inc.php";
 require_once "../includes/dbh.inc.php";
 require_once "../includes/admin_auth.inc.php";
 
-// 1. Pending Rentals
-$pending = $pdo->query("SELECT COUNT(*) AS pending_count FROM rentals WHERE rent_status = 'pending'")
-              ->fetchColumn();
+// Counts all Pending Rentals
+$pending = $pdo->query("SELECT COUNT(*) AS pending_count FROM rentals WHERE rent_status = 'pending'")->fetchColumn();
 
 // 2. Most Rented Products
 $topProducts = $pdo->query("
@@ -17,7 +16,7 @@ $topProducts = $pdo->query("
     LIMIT 5
 ")->fetchAll();
 
-// 3. Revenue Over Time
+// Revenue Over Time
 $revenue = $pdo->query("
     SELECT DATE_FORMAT(request_date, '%Y-%m') AS month, SUM(total_price) AS total_revenue
     FROM rentals
@@ -25,7 +24,7 @@ $revenue = $pdo->query("
     ORDER BY month DESC
 ")->fetchAll();
 
-// 4. Rentals Per User
+// Rentals Per User
 $userRentals = $pdo->query("
     SELECT users.username, COUNT(rentals.rental_id) AS rental_count
     FROM rentals
@@ -39,14 +38,20 @@ $userRentals = $pdo->query("
 <html>
 <head>
     <title>Admin Analytics Dashboard</title>
-    <link rel="stylesheet" href="../css/index_1.css">
+    <link rel="stylesheet" href="../css/index_5.css">
     <style>
         body { font-family: Arial; }
         h2 { margin-top: 2rem; }
+
+        .admin-main {
+            padding-top: 200px;
+        }
         table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
         table, th, td { border: 1px solid #ccc; }
         th, td { padding: 10px; text-align: left; }
         .stat { font-size: 1.5rem; margin: 1rem 0; }
+
+
     </style>
 </head>
 <body>
@@ -128,7 +133,7 @@ $userRentals = $pdo->query("
         </nav>
     </header>
 
-    <div>
+    <div class="admin-main">
         <h1>📈 Admin Dashboard</h1>
 
         <div class="stat">

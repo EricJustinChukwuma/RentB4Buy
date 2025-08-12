@@ -141,7 +141,7 @@ span.cart-counter {
     position: absolute;
     background-color: #e0dede;
     width: 200px;
-    padding: 20px 0px;
+    padding: 10px 0px 20px;
     top: 50px;
     left: -80px;
     display: flex;

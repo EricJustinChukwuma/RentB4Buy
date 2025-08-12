@@ -78,6 +78,8 @@ closeMenu.addEventListener('click', function() {
 
 
 
+
+
 // fetch('https://api.myjson.online/v1/records/e14b5978-ff2c-4db7-951a-5a127e6d1dcb')
 //   .then(response => response.json())
 //   .then(data => {
