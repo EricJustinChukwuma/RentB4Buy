@@ -130,7 +130,7 @@
 
                 <button type="submit">Signup</button>
             </form>
-            <p>Already have an account? <a href="./Signup.php">Login</a></p>
+            <p>Already have an account? <a href="./Login.php">Login</a></p>
         </div>
     </section>
 

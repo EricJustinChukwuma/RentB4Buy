@@ -9,11 +9,11 @@
     gap: 60px;
 }
 
-#profile-main a {
+/* #profile-main a {
     position: absolute;
     bottom: 25px;
     width: 460px;
-}
+} */
 
 
 #profile-main .profile-main-info {
@@ -36,8 +36,8 @@
     gap: 30px;
 }
 
-#profile-main .view-rentals-section .view-rentals {
-    width: 500px;
+#profile-main .profile-info-settings .info-setting {
+    
     height: 320px;
     padding: 20px;
     display: flex;
@@ -85,37 +85,21 @@
     color: #363636;
 }
 
-#profile-main .profile-info-settings {
+/* #profile-main .profile-info-settings {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 30px;
-}
-
-#profile-main .profile-info-settings .info-setting {
-    width: 500px;
-    height: 320px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 30px;
-    border: 1px solid #f8f3f3;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-    font-family:Arial, Helvetica, sans-serif;
-    position: relative;
-}
-
-/* #profile-main .profile-info-settings {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 30px;
-}
-
-#profile-main .profile-info-settings .info-setting {
-    background-color: red;
 } */
+
+
+
+#profile-main .profile-info-settings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    min-width: 300px;
+}
 
 .info-setting span svg {
     width: 40px;
@@ -149,4 +133,64 @@
 .info-setting a:hover {
     background-color: #e0dede;
     color: #363636;
+}
+
+@media only screen and (max-width: 576px) {
+    #profile-main {
+        width: 100%;
+        padding-block: 160px 100px;
+        padding-inline: 20px;
+        gap: 20px;
+    }
+
+    #profile-main a {
+        position: absolute;
+        bottom: 25px;
+        width: 88%;
+    }
+
+    #profile-main .profile-info-settings {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media only screen and (max-width: 799px) {
+    #profile-main {
+        width: 100%;
+        padding-block: 160px 100px;
+        padding-inline: 20px;
+        gap: 20px;
+    }
+
+    #profile-main a {
+        position: absolute;
+        bottom: 25px;
+        width: 88%;
+    }
+
+    #profile-main .profile-info-settings {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    #profile-main {
+        width: 100%;
+        padding-block: 160px 100px;
+        padding-inline: 20px;
+        gap: 20px;
+    }
+
+    #profile-main a {
+        position: absolute;
+        bottom: 25px;
+        width: 88%;
+    }
+
+    #profile-main .profile-info-settings {
+        flex-direction: column;
+        gap: 20px;
+    }
 }

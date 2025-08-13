@@ -9,14 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rent B4 Buy/Home</title>
     <link rel="stylesheet" href="../css/index_5.css">
-    <link rel="stylesheet" href="../css/Profile.css">
+    <link rel="stylesheet" href="../css/Profile_1.css">
 </head>
 <body>
     <header id="header" class="section">
         <nav id="navbar-container">
 
             <div class="logo-container">
-                <a class="logo" href="../html/index.html">
+                <a class="logo" href="../html/index.php">
                     <span>Rent</span>
                     <span>b4</span>
                     <span>Buy</span>
@@ -25,14 +25,17 @@
 
             <div class="navbar">
                 <div class="nav-links">
-                    <a href="../html/index.php">Home</a>
+                    <a class="active" href="../html/index.php">Home</a>
                     <a href="../html/product_page.php">Products</a>
                     <a href="../html/About.php">About</a>
                     <a href="../html/How_it_works.php">How it works</a>
                     <a href="../html/Contact.php">Contact Us</a>
                 </div>
 
-                <?php if(isset($_SESSION['user_id']) && isset($_SESSION["user_role_id"]) && $_SESSION["user_role_id"] === 2) : ?>
+                <?php if(isset($_SESSION['user_id']) && isset($_SESSION["user_role_id"]) && $_SESSION["user_role_id"] === 1) { 
+                        echo "";
+                    } else {
+                ?>
                     <div class="cart-container">
                         <a href="./Cart.php">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
@@ -47,7 +50,8 @@
                             ?>
                         </span>
                     </div>
-                <?php endif ?>
+                <?php }; ?>
+
 
                 <?php
                     if (isset($_SESSION['user_id']) && isset($_SESSION["user_initials"])) :
@@ -70,10 +74,10 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M224 160C241.7 160 256 145.7 256 128C256 110.3 241.7 96 224 96L160 96C107 96 64 139 64 192L64 448C64 501 107 544 160 544L224 544C241.7 544 256 529.7 256 512C256 494.3 241.7 480 224 480L160 480C142.3 480 128 465.7 128 448L128 192C128 174.3 142.3 160 160 160L224 160zM566.6 342.6C579.1 330.1 579.1 309.8 566.6 297.3L438.6 169.3C426.1 156.8 405.8 156.8 393.3 169.3C380.8 181.8 380.8 202.1 393.3 214.6L466.7 288L256 288C238.3 288 224 302.3 224 320C224 337.7 238.3 352 256 352L466.7 352L393.3 425.4C380.8 437.9 380.8 458.2 393.3 470.7C405.8 483.2 426.1 483.2 438.6 470.7L566.6 342.7z"/></svg>
                             </li>
                         </ul>
-                        <h3>Hi, <?= $_SESSION["user_firstname"] . " " . $_SESSION["user_lastname"]?></h3>
+                        <h3>Hi, <?= $_SESSION["user_firstname"] . " " . $_SESSION["user_lastname"];?></h3>
                     </div>
                 <?php endif; ?>
-
+                
                 
         
                 <?php
@@ -85,6 +89,31 @@
                     </div>
 
                 <?php endif; ?>
+            </div>
+
+            <span id="sidenav-open">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M96 160C96 142.3 110.3 128 128 128L512 128C529.7 128 544 142.3 544 160C544 177.7 529.7 192 512 192L128 192C110.3 192 96 177.7 96 160zM96 320C96 302.3 110.3 288 128 288L512 288C529.7 288 544 302.3 544 320C544 337.7 529.7 352 512 352L128 352C110.3 352 96 337.7 96 320zM544 480C544 497.7 529.7 512 512 512L128 512C110.3 512 96 497.7 96 480C96 462.3 110.3 448 128 448L512 448C529.7 448 544 462.3 544 480z"/></svg>
+            </span>
+
+
+            <div id="sidenav" class="sidenav">
+                <button id="close-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+                </button>
+                <a href="ProfilePage.php" id="view-profile">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M463 448.2C440.9 409.8 399.4 384 352 384L288 384C240.6 384 199.1 409.8 177 448.2C212.2 487.4 263.2 512 320 512C376.8 512 427.8 487.3 463 448.2zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 336C359.8 336 392 303.8 392 264C392 224.2 359.8 192 320 192C280.2 192 248 224.2 248 264C248 303.8 280.2 336 320 336z"/></svg>
+                    <span>View Profile</span>
+                </a>
+                <a href="index.php">Home</a>
+                <a href="product_page.php">Products</a>
+                <a href="about.php">About</a>
+                <a href="How_it_works.php">How it works</a>
+                <a href="contact.php">Contact Us</a>
+
+                <div class="sidenav-signup">
+                    <a href="../Signup.php">Signup</a>
+                    <a href="../Login.php">Login</a>
+                </div>
             </div>
 
         </nav>
@@ -111,31 +140,19 @@
                     <p>Manage your card information. Update an existing card payment information or add another card for payment.</p>
                     <a href="Admin_Products.php" class="card-setting">Manage Product Listing</a>
                 </div>
-            </div>
-
-            <div class="view-rentals-section">
-                <div class="view-rentals">
+                <div class="info-setting">
                     <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M432 96C387.8 96 352 131.8 352 176L352 424.2L54.8 513.4C37.9 518.4 28.3 536.3 33.4 553.2C38.5 570.1 56.3 579.7 73.2 574.7L388.7 480.1L432.4 480.1C432.2 482.7 432 485.4 432 488.1C432 536.7 471.4 576.1 520 576.1C568.6 576.1 608 536.7 608 488.1L608 96.1L432 96.1zM560 488C560 510.1 542.1 528 520 528C497.9 528 480 510.1 480 488C480 465.9 497.9 448 520 448C542.1 448 559.9 465.9 560 487.9L560 488zM83.9 213.5C50.1 223.8 31.1 259.6 41.4 293.4L69.5 385.2C79.8 419 115.6 438 149.4 427.7L241.2 399.6C275 389.3 294 353.5 283.7 319.7L255.6 227.9C245.3 194.1 209.5 175.1 175.7 185.4L83.9 213.5z"/></svg></span>
                     <h3>Manage and View All Rental</h3>
                     <p>View and manage ongoing rentals. Here you can set or update rental status of user</p>
                     <a href="../html/Admin_Rentals_Page.php">Manage Rentals</a>
                 </div>
-                <div class="view-rentals">
+                <div class="info-setting">
                     <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M432 96C387.8 96 352 131.8 352 176L352 424.2L54.8 513.4C37.9 518.4 28.3 536.3 33.4 553.2C38.5 570.1 56.3 579.7 73.2 574.7L388.7 480.1L432.4 480.1C432.2 482.7 432 485.4 432 488.1C432 536.7 471.4 576.1 520 576.1C568.6 576.1 608 536.7 608 488.1L608 96.1L432 96.1zM560 488C560 510.1 542.1 528 520 528C497.9 528 480 510.1 480 488C480 465.9 497.9 448 520 448C542.1 448 559.9 465.9 560 487.9L560 488zM83.9 213.5C50.1 223.8 31.1 259.6 41.4 293.4L69.5 385.2C79.8 419 115.6 438 149.4 427.7L241.2 399.6C275 389.3 294 353.5 283.7 319.7L255.6 227.9C245.3 194.1 209.5 175.1 175.7 185.4L83.9 213.5z"/></svg></span>
                     <h3>Manage all users</h3>
                     <p>View and manage ongoing rentals. Here you can set or update rental status of user</p>
                     <a href="../html/Admin_Users.php">View Users</a>
                 </div>
-            </div>
-
-            <div class="view-rentals-section">
-                <div class="view-rentals">
-                    <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M432 96C387.8 96 352 131.8 352 176L352 424.2L54.8 513.4C37.9 518.4 28.3 536.3 33.4 553.2C38.5 570.1 56.3 579.7 73.2 574.7L388.7 480.1L432.4 480.1C432.2 482.7 432 485.4 432 488.1C432 536.7 471.4 576.1 520 576.1C568.6 576.1 608 536.7 608 488.1L608 96.1L432 96.1zM560 488C560 510.1 542.1 528 520 528C497.9 528 480 510.1 480 488C480 465.9 497.9 448 520 448C542.1 448 559.9 465.9 560 487.9L560 488zM83.9 213.5C50.1 223.8 31.1 259.6 41.4 293.4L69.5 385.2C79.8 419 115.6 438 149.4 427.7L241.2 399.6C275 389.3 294 353.5 283.7 319.7L255.6 227.9C245.3 194.1 209.5 175.1 175.7 185.4L83.9 213.5z"/></svg></span>
-                    <h3>Manage and View All Rental</h3>
-                    <p>View and manage ongoing rentals. Here you can set or update rental status of user</p>
-                    <a href="../html/Admin_Rentals_Page.php">Manage Rentals</a>
-                </div>
-                <div class="view-rentals">
+                <div class="info-setting">
                     <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M160 96C124.7 96 96 124.7 96 160L96 480C96 515.3 124.7 544 160 544L480 544C515.3 544 544 515.3 544 480L544 160C544 124.7 515.3 96 480 96L160 96zM216 288C229.3 288 240 298.7 240 312L240 424C240 437.3 229.3 448 216 448C202.7 448 192 437.3 192 424L192 312C192 298.7 202.7 288 216 288zM400 376C400 362.7 410.7 352 424 352C437.3 352 448 362.7 448 376L448 424C448 437.3 437.3 448 424 448C410.7 448 400 437.3 400 424L400 376zM320 192C333.3 192 344 202.7 344 216L344 424C344 437.3 333.3 448 320 448C306.7 448 296 437.3 296 424L296 216C296 202.7 306.7 192 320 192z"/></svg></span>
                     <h3>View Admin Dashboard</h3>
                     <p>View and analyse all stats related to entire platform</p>
@@ -185,10 +202,6 @@
         } ?>
     </main>
     
-
-
-
-
     <footer>
         <div class="footer-container">
             <a class="footer-logo" href="./index.php">

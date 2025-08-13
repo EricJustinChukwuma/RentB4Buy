@@ -129,7 +129,6 @@
         </nav>
     </header>
 
-
     <main id="banner-container">
         <div class="banner">
             <h1>Experience Products Before You Commit</h1>
@@ -162,7 +161,6 @@
             <div class="line"></div>
         </div>
     </section>
-
 
     <section id="top-rental-container">
         <div class="top-rentals">
