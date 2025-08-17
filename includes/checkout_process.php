@@ -1,4 +1,16 @@
 <?php
+/*
+    If you are dealing with cardholder data (like PAN, expiration date, CVV, or even names linked to them), you must follow PCI DSS:
+
+Encrypt data at rest and in transit.
+
+Limit access strictly.
+
+Don’t store sensitive authentication data (like CVV) after authorization.
+
+Use strong key management.
+
+*/
 require_once "config_session.inc.php";
 require_once "dbh.inc.php";
 
@@ -7,9 +19,9 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['cart']) || empty($_SESSION
 }
 
 $user_id       = $_SESSION['user_id'];
-$houseNumber   = $_POST['house_number'] ?? ''; // sets houseNumber variable to the POST Request Value when the user submits the form if it exist or an empty string
-$streetName    = $_POST['street_name'] ?? '';
-$postCode      = $_POST['post_code'] ?? '';
+$house_number   = $_POST['house_number'] ?? ''; // sets houseNumber variable to the POST Request Value when the user submits the form if it exist or an empty string
+$street_name    = $_POST['street_name'] ?? '';
+$post_code      = $_POST['post_code'] ?? '';
 $town          = $_POST['town'] ?? '';
 $county        = $_POST['county'] ?? '';
 $start_date    = $_POST['start_date'] ?? '';
@@ -21,6 +33,11 @@ $cardholder_name = $_POST['cardholder_name'] ?? ''; // sets cardholder_name vari
 $card_number     = $_POST['card_number'] ?? '';
 $expiry_date     = $_POST['expiry_date'] ?? '';
 $cvv             = $_POST['cvv'] ?? '';
+
+// $hashedCardName = hash("sha256", $cardholder_name);
+// $hashedCardNumber = hash("sha256", $card_number);
+// $hashedExpiryDate = password_hash($pwd, PASSWORD_BCRYPT, $options);
+// $hashedCVV = password_hash($pwd, PASSWORD_BCRYPT, $options);
 
 $todayPlus3 = date('Y-m-d', strtotime('+3 days')); // sets start date to never be less than 3 days after a user makes a request
 

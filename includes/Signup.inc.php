@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $errors["email_taken"] = "Email already taken";
         }
 
-        // REQUIRE THE CONFIG FILE THAT HAS A MUICH SAFER SESSION
+        // REQUIRE THE CONFIG FILE THAT HAS A MUCH SAFER SESSION
         require_once "config_session.inc.php";
 
 

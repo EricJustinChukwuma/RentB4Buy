@@ -256,15 +256,20 @@ span.cart-counter {
     margin-block: auto;
 }
 
+.sidenav-logout-container {
+    margin-top: auto;
+}
+
 .sidenav-logout-container a {
     display: flex;
-    color: red
+    align-items: center;
+    background-color: red;
 }
 
 .sidenav-logout-container a svg {
     height: 30px;
     width: 30px;
-}
+} 
 
 /*--------------------------------------------*/
 
