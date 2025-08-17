@@ -29,17 +29,16 @@
     letter-spacing: 5px;
 }
 
-#profile-main .view-rentals-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#profile-main .profile-info-settings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
+    min-width: 300px;
 }
 
-#profile-main .profile-info-settings .info-setting {
-    
-    height: 320px;
-    padding: 20px;
+#profile-main .profile-info-settings .info-setting { 
+    height: 350px;
+    padding: 20px 20px 40px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -51,55 +50,6 @@
     position: relative;
 }
 
-.view-rentals span svg {
-    width: 40px;
-    height: 40px;
-}
-
-.view-rentals h3 {
-    color: #363636;
-    font-size: 1.2em;
-    font-weight: 800;
-}
-
-.view-rentals p {
-    color: #6b6969;
-    font-size: 1em;
-    line-height: 1.5;
-    font-weight: 600;
-}
-
-.view-rentals a {
-    background-color: #363636;
-    color: #fff;
-    text-decoration: none;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0px;
-    border-radius: 20px;
-    transition: all ease-in-out .1s;
-}
-
-.view-rentals a:hover {
-    background-color: #e0dede;
-    color: #363636;
-}
-
-/* #profile-main .profile-info-settings {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-} */
-
-
-
-#profile-main .profile-info-settings {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    min-width: 300px;
-}
 
 .info-setting span svg {
     width: 40px;

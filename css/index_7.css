@@ -178,7 +178,15 @@ span.cart-counter {
     color: #880a0a;
 }
 
-#navbar-container .profile-menu li svg {
+#navbar-container .profile-menu li a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#navbar-container .profile-menu li a svg {
     height: 20px;
     width: 20px;
 }
@@ -256,15 +264,20 @@ span.cart-counter {
     margin-block: auto;
 }
 
+.sidenav-logout-container {
+    margin-top: auto;
+}
+
 .sidenav-logout-container a {
     display: flex;
-    color: red
+    align-items: center;
+    background-color: red;
 }
 
 .sidenav-logout-container a svg {
     height: 30px;
     width: 30px;
-}
+} 
 
 /*--------------------------------------------*/
 
