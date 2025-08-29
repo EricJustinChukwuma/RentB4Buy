@@ -41,7 +41,7 @@ $stmt = $pdo->prepare("INSERT INTO cards (user_id, cardholder_name, card_number,
 $stmt->bindParam(':user_id', $user_id);
 $stmt->bindParam(':cardholder_name', $cardholder_name);
 $stmt->bindParam(':card_number', $card_number);
-$stmt->bindParam(':expiry_date', $user_id);
+$stmt->bindParam(':expiry_date', $expiry_date);
 $stmt->bindParam(':cvv', $cvv);
 $stmt->execute();
 $card_id = $pdo->lastInsertId(); // gets the id of the last inserted row of data to the cards table
@@ -55,6 +55,8 @@ try {
     $stmt->bindParam(':rental_id', $rental_id);
     $stmt->bindParam(':user_id', $user_id);
     $stmt->execute();
+
+    // Checks if no rental record matches the rental id of current product to be purchased
     if (!$stmt->fetch()) {
         throw new Exception("Rental not found or unauthorized");
     }
@@ -70,12 +72,17 @@ try {
     $card_id = $pdo->lastInsertId(); // gets the id of the last inserted row of data to the cards table
 
     // Insert payment
-    $stmt = $pdo->prepare("INSERT INTO payments (user_id, rental_id, amount, payment_method, payment_status, card_id) VALUES (?, ?, ?, 'card', 'completed', ?)");
-    $stmt->execute([$user_id, $rental_id, $amount, $card_id]);
+    $stmt = $pdo->prepare("INSERT INTO payments (user_id, rental_id, amount, payment_method, payment_status, card_id) VALUES (:user_id, :rental_id, :amount, 'card', 'completed', :card_id)");
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->bindParam(':rental_id', $rental_id);
+    $stmt->bindParam(':amount', $amount);
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->execute();
 
     // Update rental status to purchased
-    $stmt = $pdo->prepare("UPDATE rentals SET rent_status = 'purchased' WHERE rental_id = ?");
-    $stmt->execute([$rental_id]);
+    $stmt = $pdo->prepare("UPDATE rentals SET rent_status = 'purchased' WHERE rental_id = :rental_id");
+    $stmt->bindParam(':rental_id', $rental_id);
+    $stmt->execute();
 
     $pdo->commit();
 
