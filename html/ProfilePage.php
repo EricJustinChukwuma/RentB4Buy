@@ -1,5 +1,12 @@
 <?php
     require_once "../includes/config_session.inc.php";
+
+    // Ensure that the profile page cannot be accessed if user is not logged in
+    if (!isset($_SESSION["user_id"]) || !isset($_SESSION["user_role_id"])) {
+        header("Location: ../Login.php");
+        exit();
+    };
+    
 ?>
 
 <!DOCTYPE html>

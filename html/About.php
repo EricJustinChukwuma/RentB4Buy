@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rent B4 Buy/Home</title>
+    <title>Rent B4 Buy/About</title>
     <link rel="stylesheet" href="../css/index_7.css">
 </head>
 <body>

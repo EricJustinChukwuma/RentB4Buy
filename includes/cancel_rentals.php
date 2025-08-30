@@ -2,6 +2,7 @@
 require_once "../includes/config_session.inc.php";
 require_once "../includes/dbh.inc.php";
 
+// Checks if rental IFD or user ID doesn't exist and dies the script
 if (!isset($_POST['rental_id']) || !isset($_SESSION['user_id'])) {
     die("Unauthorized.");
 }

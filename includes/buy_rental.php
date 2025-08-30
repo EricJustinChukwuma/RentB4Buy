@@ -3,24 +3,29 @@
 require_once "config_session.inc.php";
 require_once "dbh.inc.php";
 
+// checks if user ID doesn't exist and dies the script
 if (!isset($_SESSION['user_id'])) {
     die("Unauthorized");
 }
 
+// checks if rental ID, product ID and amount is not set then die the script
 if (!isset($_POST['rental_id'], $_POST['product_id'], $_POST['amount'])) {
     die("Invalid request");
 }
 
+// Checks if the page tries to be accessed using a GET Request method and redirect the user back to the login page
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
     header("Location: ../Login.php");
     die();
 };
 
+// Fetch all POST Request Values and store them in a variable
 $rental_id = intval($_POST['rental_id']);
 $product_id = intval($_POST['product_id']);
 $amount = floatval($_POST['amount']);
 $user_id = $_SESSION['user_id'];
 
+// Fetch all POST Request Values and store them in a variable and if they don't exist assign an empty string to it.
 $cardholder_name = trim($_POST['cardholder_name'] ?? '');
 $card_number = trim($_POST['card_number'] ?? '');
 $expiry_date = trim($_POST['expiry_date'] ?? '');
@@ -37,6 +42,7 @@ if (!$cardholder_name || !$card_number || !$expiry_date || !$cvv) {
 // $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Insert card details 
+//REMEMBER TO TAKE OUT THE CVV
 $stmt = $pdo->prepare("INSERT INTO cards (user_id, cardholder_name, card_number, expiry_date, cvv) VALUES (:user_id, :cardholder_name, :card_number, :expiry_date, :cvv)");
 $stmt->bindParam(':user_id', $user_id);
 $stmt->bindParam(':cardholder_name', $cardholder_name);

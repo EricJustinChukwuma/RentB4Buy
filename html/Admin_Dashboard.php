@@ -3,7 +3,7 @@ require_once "../includes/config_session.inc.php";
 require_once "../includes/dbh.inc.php";
 require_once "../includes/admin_auth.inc.php";
 
-// Counts all Pending Rentals
+// Fetch the Counts of all Pending Rentals
 $pending = $pdo->query("SELECT COUNT(*) AS pending_count FROM rentals WHERE rent_status = 'pending'")->fetchColumn();
 
 // 2. Most Rented Products
@@ -17,6 +17,10 @@ $topProducts = $pdo->query("
 ")->fetchAll();
 
 // Revenue Over Time
+// Calculates the total revenue for each month from the rentals table
+// Sum up the total price
+// Group the result by year and month
+// order it by most recent month to the olest
 $revenue = $pdo->query("
     SELECT DATE_FORMAT(request_date, '%Y-%m') AS month, SUM(total_price) AS total_revenue
     FROM rentals
@@ -24,7 +28,7 @@ $revenue = $pdo->query("
     ORDER BY month DESC
 ")->fetchAll();
 
-// Rentals Per User
+// Fetch all Rentals Per User
 $userRentals = $pdo->query("
     SELECT users.username, COUNT(rentals.rental_id) AS rental_count
     FROM rentals
@@ -40,19 +44,33 @@ $userRentals = $pdo->query("
     <title>Admin Analytics Dashboard</title>
     <link rel="stylesheet" href="../css/index_7.css">
     <style>
-        body { font-family: Arial; }
-        h2 { margin-top: 2rem; }
+        body { 
+            font-family: Arial; 
+        }
+        h2 { 
+            margin-top: 2rem; 
+        }
 
         .admin-main {
             padding-block: 200px 100px;
             padding-inline: 120px;
         }
-        table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
-        table, th, td { border: 1px solid #ccc; }
-        th, td { padding: 10px; text-align: left; }
-        .stat { font-size: 1.5rem; margin: 1rem 0; }
-
-
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin-top: 1rem; 
+        }
+        table, th, td { 
+            border: 1px solid #ccc; 
+        }
+        th, td { 
+            padding: 10px; 
+            text-align: left; 
+        }
+        .stat { 
+            font-size: 1.5rem; 
+            margin: 1rem 0; 
+        }
     </style>
 </head>
 <body>

@@ -1,33 +1,15 @@
 <?php
-require_once "../includes/config_session.inc.php";
-require_once "../includes/dbh.inc.php";
-
-
-if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
-    header("Location: Cart.php");
-    exit();
-}
-
-$minStartDate = date('Y-m-d', strtotime('+3 days'));
-
-$firstname = $_SESSION["user_firstname"];
-$lastname = $_SESSION["user_lastname"];
+    require_once "../includes/config_session.inc.php";
+    // require_once "../includes/Login_View.inc.php";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rental Checkout</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rent B4 Buy/How it works</title>
     <link rel="stylesheet" href="../css/index_7.css">
-    <link rel="stylesheet" href="../css/checkout.css">
-
-    <style>
-        #error-msg {
-            color: red;
-            font-size: 1.2em;
-        }
-    </style>
 </head>
 <body>
     <header id="header" class="section">
@@ -45,13 +27,13 @@ $lastname = $_SESSION["user_lastname"];
                 <div class="nav-links">
                     <a href="../html/index.php">Home</a>
                     <a href="../html/product_page.php">Products</a>
-                    <a href="../html/About.php">About</a>
+                    <a class="active" href="../html/About.php">About</a>
                     <a href="../html/How_it_works.php">How it works</a>
                     <a href="../html/Contact.php">Contact Us</a>
                 </div>
 
                 <?php if(isset($_SESSION['user_id']) && isset($_SESSION["user_role_id"]) && $_SESSION["user_role_id"] === 2) : ?>
-                    <div class="cart-container active">
+                    <div class="cart-container">
                         <a href="./Cart.php">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
                         </a>
@@ -152,72 +134,39 @@ $lastname = $_SESSION["user_lastname"];
         </nav>
     </header>
 
-    <main class="checkout-container">
-        <h2>Rental Checkout</h2>
 
-        <h3>Order Summary</h3>
-
-        <div class="prod-checkout-container">
-            <?php foreach ($_SESSION['cart'] as $item): ?>
-                <div class="prod-checkout-details">
-                    <img src="<?= htmlspecialchars($item['product_image']) ?>" width="180" height="160">
-
-                    <div>
-                        <p><span>Product Name: </span> <?= htmlspecialchars($item['product_name']) ?></p>
-
-                        <p><span>Total price: </span>£<?= htmlspecialchars($item['price_per_day']) ?>/day × <?= $item['quantity'] ?> qty</p>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+    <main id="banner-container">
+        <div class="banner">
+            <h1>What we are about</h1>
+            <p>We are an organisation that aims to promote customer satisfaction and trust. We aim to achieve this through providing our customers with products they can trust at an affordable rental price which offers them a firsthand experience of our products with an option to buy if they feel the product is what they need. This will help us to improve customer satisfaction as well as reducing or mitigating some of the risk encountered in today's mode of E-Commerce platforms.</p>
+            <a href="../html/How-It-Works.php">Find Out More</a>
         </div>
-
-        <form class="checkout-form" action="../includes/checkout_process.php" method="POST">
-            
-
-            <h3>Delivery Address</h3>
-            <p id="error-msg"></p>
-
-            <div class="address-container">
-                <input id="house-number" type="text" name="house_number" placeholder="House number">
-                <input id="street-name" type="text" name="street_name" placeholder="Street name">
-                <input id="post-code" type="text" name="post_code" placeholder="Post Code">
-                <input id="town" type="text" name="town" placeholder="Town" >
-                <input id="county" type="text" name="county" placeholder="County" >
-            </div>
-
-            <div class="date-days-container">
-                <label>Rental Start Date:</label>
-                <input type="date" name="start_date" min="<?= $minStartDate ?>" required>
-            </div>
-
-            <div class="date-days-container">
-                <label>Rental Duration (days):</label><br>
-                <input type="number" name="rental_days" min="1" required>
-            </div>
-
-            <p class="cart-total-price">
-                <?php echo "£" . $_SESSION['cart-total-price']; ?>
-            </p>
-
-            <div>
-                <label>Payment Method:</label>
-                <select class="payment-method" name="payment_method" required>
-                    <option value="card">Card</option>
-                    <option value="paypal">PayPal</option>
-                </select>
-            </div>
-
-            <div id="card-details">
-                <h3>Card Details</h3>
-                <input type="text" name="cardholder_name" placeholder="Cardholder Name" required>
-                <input type="text" name="card_number" placeholder="Card Number" maxlength="16" required>
-                <input type="text" name="expiry_date" placeholder="MM/YY" required>
-                <input type="text" name="cvv" placeholder="CVV" maxlength="4" required>
-            </div>
-
-            <button type="submit">Confirm Rental</button>
-        </form>
     </main>
+
+    <section id="offers-section">
+        <div class="offers-container">
+            <h1>WHAT WE OFFER</h1>
+            <div>
+                <div class="offer">
+                    <h3>High quality products</h3>
+                    <p>We provide high quality tech gadgets with certified quality check</p>
+                </div>
+                <div class="offer">
+                    <h3>No hidden cost</h3>
+                    <p>No extra hidden fees for any transaction. Never pay more than 20% product price for any rental.</p>
+                </div>
+                <div class="offer">
+                    <h3>Damage protection</h3>
+                    <p>You are covered for damages to product by up to 70% of the product cost</p>
+                </div>
+                <div class="offer">
+                    <h3>Best deals you can trust</h3>
+                    <p>Pay less for a longer rental period above 1 month</p>
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-container">
@@ -244,24 +193,5 @@ $lastname = $_SESSION["user_lastname"];
     </footer>
 
     <script src="../js/index.js"></script>
-    <script>
-        
-
-        // const handleSubmit = onsubmit(function() {
-        //     let houseNumber = document.getElementById('house-number').value
-        //     let streetName = document.getElementById('street-name').value
-        //     let postCode = document.getElementById('post-code').value
-        //     let town = document.getElementById('town').value
-        //     let county = document.getElementById('county').value
-
-        //     let errMsg = document.getElementById('error-msg')
-
-
-        //     if (houseNumber || streetName || postCode || town || county === "") {
-        //         errMsg.innerHTML = "Please fill in all field";
-        //     }
-        // })
-    </script>
-
 </body>
 </html>
