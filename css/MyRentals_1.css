@@ -1,3 +1,8 @@
+.my-rentals-main {
+    padding-block: 250px 300px;
+    padding-inline: 80px;
+}
+
 .rental-card {
     border: 1px solid #ccc;
     padding: 15px;
@@ -5,6 +10,7 @@
     border-radius: 8px;
 }
 .rental-card img {
-    max-width: 120px;
+    max-width: 130px;
+    height: 200px;
     border-radius: 6px;
 }

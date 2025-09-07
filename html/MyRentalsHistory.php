@@ -29,7 +29,7 @@ $rentals = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/index_7.css">
-    <link rel="stylesheet" href="../css/MyRentals.css">
+    <link rel="stylesheet" href="../css/MyRentals_1.css">
 </head>
 <body>
     <header id="header" class="section">

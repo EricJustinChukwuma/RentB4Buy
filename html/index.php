@@ -19,7 +19,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rent B4 Buy/Home</title>
-    <link rel="stylesheet" href="../css/index_7.css">
+    <link rel="stylesheet" href="../css/index_8.css">
+    <!-- <style>
+        #banner-container .banner {
+            background-color: red;
+        }
+    </style> -->
 </head>
 <body>
     <header id="header" class="section">
@@ -180,15 +185,6 @@
         </div>
     </section>
 
-    <section id="top-rental-container">
-        <div class="top-rentals">
-            <h1>Top Rentals</h1>
-            <div id="top-products-list" class="top-products-list">
-                
-            </div>
-        </div>
-    </section>
-
     <section id="rent-section">
         <div class="rent-container">
             <h1>How To Rent</h1>
@@ -231,6 +227,15 @@
             </div>
             <div class="line"></div>
         </div>  
+    </section>
+
+    <section id="top-rental-container">
+        <div class="top-rentals">
+            <h1>Top Rentals</h1>
+            <div id="top-products-list" class="top-products-list">
+                
+            </div>
+        </div>
     </section>
 
     <footer>

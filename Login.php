@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rent B4 Buy/Login</title>
-    <link rel="stylesheet" href="./css/index_7.css">
+    <link rel="stylesheet" href="./css/index_8.css">
     <link rel="stylesheet" href="./css/login_1.css">
 </head>
 <body>
@@ -103,11 +103,11 @@
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M463 448.2C440.9 409.8 399.4 384 352 384L288 384C240.6 384 199.1 409.8 177 448.2C212.2 487.4 263.2 512 320 512C376.8 512 427.8 487.3 463 448.2zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320zM320 336C359.8 336 392 303.8 392 264C392 224.2 359.8 192 320 192C280.2 192 248 224.2 248 264C248 303.8 280.2 336 320 336z"/></svg>
                     <span>View Profile</span>
                 </a>
-                <a href="index.php">Home</a>
-                <a href="product_page.php">Products</a>
-                <a href="about.php">About</a>
-                <a href="How_it_works.php">How it works</a>
-                <a href="contact.php">Contact Us</a>
+                <a href="./html/index.php">Home</a>
+                <a href="./html/product_page.php">Products</a>
+                <a href="./html/about.php">About</a>
+                <a href="./html/How_it_works.php">How it works</a>
+                <a href="./html/contact.php">Contact Us</a>
 
                 <div class="sidenav-signup">
                     <a href="../Signup.php">Signup</a>

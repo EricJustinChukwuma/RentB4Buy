@@ -14,7 +14,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Admin - Users</title>
-    <link rel="stylesheet" href="../css/index_7.css">
+    <link rel="stylesheet" href="../css/index_8.css">
     <link rel="stylesheet" href="../css/Admin_User.css">
     <style>
         .user-info-section {

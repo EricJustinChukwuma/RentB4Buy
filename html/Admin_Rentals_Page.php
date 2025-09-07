@@ -43,7 +43,7 @@ $rentals = $stmt->fetchAll();
 <html>
 <head>
     <title>Admin - Manage Rentals</title>
-    <link rel="stylesheet" href="../css/index_7.css">
+    <link rel="stylesheet" href="../css/index_8.css">
     <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>

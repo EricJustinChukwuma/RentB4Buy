@@ -25,7 +25,6 @@ body {
     width: 100%;
     padding-inline: 60px;
     display: flex;
-    flex-direction: column;
     position: fixed;
     z-index: 999;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
@@ -38,8 +37,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid black;
     padding-inline: 40px;
-    padding-block: 50px 30px;
+    padding-block: 50px;
 }
 
 #navbar-container .navbar {
@@ -141,7 +141,7 @@ span.cart-counter {
     position: absolute;
     background-color: #e0dede;
     width: 200px;
-    padding: 20px 0px;
+    padding: 10px 0px 20px;
     top: 50px;
     left: -80px;
     display: flex;
@@ -150,7 +150,7 @@ span.cart-counter {
     justify-content: center;
     border-radius: 5px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-    transform: translateY(-40%);
+    transform: translateY(-60%);
     opacity: 0;
     z-index: -999;
     transition: all ease-in-out .2s;
@@ -175,9 +175,18 @@ span.cart-counter {
 
 #navbar-container .profile-menu li:hover {
     background-color: #c7c5c5;
+    color: #880a0a;
 }
 
-#navbar-container .profile-menu li svg {
+#navbar-container .profile-menu li a {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#navbar-container .profile-menu li a svg {
     height: 20px;
     width: 20px;
 }
@@ -255,208 +264,240 @@ span.cart-counter {
     margin-block: auto;
 }
 
+.sidenav-logout-container {
+    margin-top: auto;
+}
+
+.sidenav-logout-container a {
+    display: flex;
+    align-items: center;
+    background-color: red;
+}
+
+.sidenav-logout-container a svg {
+    height: 30px;
+    width: 30px;
+} 
+
 /*--------------------------------------------*/
 
+/*----------- BANNER -------------------------*/
+#banner-container {
+    padding-top: 180px;
+    padding-inline: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+#banner-container .banner {
+    width: 100%;
+    padding: 20px 40px;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
 
+#banner-container .banner h1 {
+    width: 15%;
+    font-size: 40px
+}
 
+#banner-container .banner p {
+    width: 75%;
+    line-height: 2;
+}
 
+#banner-container .banner a {
+    padding: 20px 55px;
+    font-size: 20px;
+    background-color: #000000;
+    color: #fff;
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    border: none;
+    text-decoration: none;
+}
+/*----------------------------------------*/
 
+/*---------- OFFERS -----------------------*/
+#offers-section {
+    display: flex;
+    align-items: center;
+    padding-inline: 120px;
+    margin-top: 60px;
+}
 
-
-
-
-
-
-
-
-/*------- PRODUCTS SECTION ---------------*/
-#search-section {
+.offers-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
+    gap: 60px;
 }
 
-.search-section-container {
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 100px;
-    padding: 10px 15px;
-    position: relative;
-    z-index: 990;
-}
-
-.search-container {
-    display: flex;
-    width: 40%;
-}
-
-#search-input {
+.offers-container > div {
     width: 100%;
-    padding: 10px 30px;
-    font-size: 20px;
-    border-radius: 25px;
-    outline: none;
-    border: none;
-    color: #363232;
-    border: 1px solid rgb(110, 108, 108)
-}
-
-/*---------------------------------------------------*/
-
-
-
-
-/*---------- PRODUCTS -----------------------------------*/
-.container {
-    max-width: 1400px;
-    margin: auto;
-    padding: 2rem;
-    /* background-color: red; */
-    padding-top: 250px;
-}
-
-.product-list {
-    /* display: flex;
-    flex-wrap: wrap; */
-    gap: 20px; 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 60px;
 }
 
-.product-card {
-    background: white;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-    /* width: calc(33% - 20px); */
-    height: 600px;
+.offers-container .offer {
+    background-color: #D9D9D9;
+    padding: 40px 40px 80px 40px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border-radius: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
-.product-card .product-image {
+.offers-container h1 {
+    font-size: 3.2em;
+    margin-bottom: 20;
+}
+
+.offers-container .offer h3 {
+    font-size: 1.8em;
+    
+}
+
+.offers-container .offer p {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.offers-container .line {
+    border-bottom: 1px solid black;
     width: 100%;
-    height: 60%;
-    border-radius: 8px;
-}
+    margin-bottom: 50px;
+    margin-top: 20px;
+    background-color: red;
+} 
+/*-------------------------------------*/
 
-.product-card h2 {
-    font-size: 18px;
-    margin: 10px 0 5px;
-}
-
-.product-card p {
-    font-size: 14px;
-    color: #666;
-}
-
-.product-card h3 {
-    color: #28a745;
-    margin: 10px 0;
-    font-size: 16px;
-}
-
-.product-card button {
-    padding: 10px;
+/*--------- TOP RENTALS ---------------*/
+#top-rental-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
-    background-color: #00c853;
-    color: white;
+    padding-inline: 120px;
+    padding-block: 50px;
+}
+
+#top-rental-container .top-rentals {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#top-rental-container .top-rentals h1 {
+    font-size: 2.5em;
+}
+
+.top-products-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    overflow-x: auto;
+}
+
+.top-products-list .product {
+    width: 100%;
+}
+
+.top-products-list .product img{
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+}
+/*----------------------------------------*/
+
+/*----------------RENT STEPS SECTION------------------*/
+#rent-section {
+    display: flex;
+    width: 100%;
+    margin-top: 100px;
+    padding-inline: 120px;
+    margin-bottom: 60px;
+}
+
+.rent-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 80px;
+}
+
+.rent-container > div {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 60px;
+}
+
+.rent-steps {
+    padding: 40px 40px 60px 40px;
+    background-color: #D9D9D9;
+    border-radius: 25px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color .2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
 }
 
-.product-card button:hover {
-    background-color: #28a745;
+.rent-container h1 {
+    font-size: 3.2em;
+    color: #363232;
 }
 
-.product-card button:last-child {
-    margin-top: 5px;
-}
-
-.product-card button:disabled {
-    background-color: gray;
-    cursor: not-allowed;
-}
-
-.product-card .counter-div {
-    margin-bottom: 5px;
+.rent-steps > span {
+    width: 60px;
+    height: 60px;
+    background-color: #000;
+    border-radius: 50px;
+    color: #fff;
     display: flex;
     align-items: center;
-    gap: 5px;
-}
-.product-card .minus-product, .product-card .add-product {
-    background-color: rgb(223, 218, 218);
-    font-size: 25px;
-    padding: 0px 8px;
-    border: 1px solid rgb(82, 79, 79);
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color .2s ease;
+    justify-content: center;
+    font-size: 1.4em;
+    font-weight: 600;
 }
 
-.product-card .minus-product:hover, .product-card .add-product:hover {
-    background-color: #00c853;
+.rent-steps div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
-/*------------------------------------------*/
+.rent-steps p {
+    font-size: 40px;
+    font-weight: 600;
+}
 
+#rent-section .line {
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    background-color: red;
+} 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*--------------------------------------------*/
 
 /*------- Footer ------------------------------*/
 footer {
@@ -504,7 +545,7 @@ footer {
 
 @media only screen and (max-width: 375px) {
     #header {
-        padding-inline: 0px;
+        padding-inline: 20px;
     }
 
     #header #navbar-container {
@@ -525,41 +566,122 @@ footer {
     }
 
 
-    /*------- SEARCH SECTION--------*/
-    #search-section {
-        padding-inline: 0px;
+    /* BANNER */
+    #banner-container {
+        padding-top: 150px;
+        padding-inline: 20px;
     }
     
-    .search-section-container {
-        width: 100%;
+    #banner-container .banner {
+        padding: 20px 40px;
+        display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 100px;
-        padding: 10px 15px;
-        border-radius: 5px;
+        justify-content: center;
+        text-align: center;
+        gap: 30px;
     }
     
-    .search-container {
-        display: flex;
+    #banner-container .banner h1 {
         width: 100%;
+        font-size: 1.4em;
     }
     
-    #search-input {
+    #banner-container .banner p {
         width: 100%;
-        padding: 10px 30px;
-        font-size: 20px;
-        border-radius: 25px;
-        outline: none;
-        border: none;
-        color: #363232;
-        border: 1px solid rgb(110, 108, 108)
+        line-height: 1.5;
+        font-size: .8em;
+    }
+    
+    #banner-container .banner a {
+        padding: 10px 25px;
+        font-size: .9em;
+        margin-left: 60px;
+        position: relative;
+    }
+
+    /* OFFERS */
+    #offers-section {
+        padding-inline: 20px;
+    }
+    
+    .offers-container {
+        gap: 30px;
+    }
+    
+    .offers-container > div {
+        gap: 30px;
+    }
+    
+    .offers-container .offer {
+        padding: 40px 40px 60px 40px;
+    }
+    
+    .offers-container h1 {
+        font-size: 1.2em;
+    }
+    
+    .offers-container .offer h3 {
+        font-size: 1.2em;
+        
+    }
+    
+    .offers-container .offer p {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+    /*-----------------------------------------*/
+
+    /*--------- TOP RENTALS ---------------------*/
+    #top-rental-container {
+        padding-inline: 20px;
+        padding-block: 30px;
+    }
+
+    /*----------------RENT STEPS SECTION------------------*/
+    #rent-section {
+        margin-top: 100px;
+        padding-inline: 20px;
+    }
+
+    .rent-container {
+        gap: 40px;
+    }
+
+    .rent-container > div {
+        gap: 20px;
+    }
+
+    .rent-steps {
+        padding: 20px 40px;
+        gap: 30px;
+    }
+
+    .rent-container h1 {
+        font-size: 1.8em;
+    }
+
+    .rent-steps > span {
+        width: 40px;
+        height: 40px;
+        font-size: 1.4em;
+    }
+
+    .rent-steps div {
+        gap: 10px;
+    }
+
+    .rent-steps p {
+        font-size: 1.4em;
     }
 }
 
 
+
+
 @media only screen and (max-width: 576px) {
     #header {
-        padding-inline: 0px;
+        padding-inline: 20px;
     }
 
     #header #navbar-container {
@@ -580,34 +702,113 @@ footer {
     }
 
 
-    /*------- SEARCH SECTION--------*/
-    #search-section {
-        padding-inline: 0px;
+    /* BANNER */
+    #banner-container {
+        padding-top: 150px;
+        padding-inline: 20px;
     }
     
-    .search-section-container {
-        width: 100%;
+    #banner-container .banner {
+        padding: 20px 40px;
+        display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 100px;
-        padding: 10px 15px;
-        border-radius: 5px;
+        justify-content: center;
+        text-align: center;
+        gap: 30px;
     }
     
-    .search-container {
-        display: flex;
+    #banner-container .banner h1 {
         width: 100%;
+        font-size: 1.4em;
     }
     
-    #search-input {
+    #banner-container .banner p {
         width: 100%;
-        padding: 10px 30px;
-        font-size: 20px;
-        border-radius: 25px;
-        outline: none;
-        border: none;
-        color: #363232;
-        border: 1px solid rgb(110, 108, 108)
+        line-height: 1.5;
+        font-size: .8em;
+    }
+    
+    #banner-container .banner a {
+        padding: 10px 25px;
+        font-size: .9em;
+        margin-left: 60px;
+        position: relative;
+    }
+
+    /* OFFERS */
+    #offers-section {
+        padding-inline: 20px;
+    }
+    
+    .offers-container {
+        gap: 30px;
+    }
+    
+    .offers-container > div {
+        gap: 30px;
+    }
+    
+    .offers-container .offer {
+        padding: 40px 40px 60px 40px;
+    }
+    
+    .offers-container h1 {
+        font-size: 1.2em;
+    }
+    
+    .offers-container .offer h3 {
+        font-size: 1.2em;
+        
+    }
+    
+    .offers-container .offer p {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+    /*-----------------------------------------*/
+
+    /*--------- TOP RENTALS ---------------------*/
+    #top-rental-container {
+        padding-inline: 20px;
+        padding-block: 30px;
+    }
+
+    /*----------------RENT STEPS SECTION------------------*/
+    #rent-section {
+        margin-top: 100px;
+        padding-inline: 20px;
+    }
+
+    .rent-container {
+        gap: 40px;
+    }
+
+    .rent-container > div {
+        gap: 20px;
+    }
+
+    .rent-steps {
+        padding: 20px 40px;
+        gap: 30px;
+    }
+
+    .rent-container h1 {
+        font-size: 1.8em;
+    }
+
+    .rent-steps > span {
+        width: 40px;
+        height: 40px;
+        font-size: 1.4em;
+    }
+
+    .rent-steps div {
+        gap: 10px;
+    }
+
+    .rent-steps p {
+        font-size: 1.4em;
     }
 }
 
@@ -631,38 +832,6 @@ footer {
     #sidenav-open {
         display: flex;
     }
-
-
-    /*------- SEARCH SECTION--------*/
-    #search-section {
-        padding-inline: 0px;
-    }
-    
-    .search-section-container {
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        gap: 100px;
-        padding: 10px 15px;
-        border-radius: 5px;
-    }
-    
-    .search-container {
-        display: flex;
-        width: 100%;
-    }
-    
-    #search-input {
-        width: 100%;
-        padding: 10px 30px;
-        font-size: 20px;
-        border-radius: 25px;
-        outline: none;
-        border: none;
-        color: #363232;
-        border: 1px solid rgb(110, 108, 108)
-    }
-    /*-------------------------------*/
 
 
     /* BANNER */
@@ -729,6 +898,13 @@ footer {
         font-size: 1em;
         line-height: 1.5;
     }
+    /*-----------------------------*/
+
+    /*--- TOP RENTALS -----------------*/
+    #top-rental-container {
+        padding-inline: 20px;
+        padding-block: 30px;
+    }
 }
 
 @media only screen and (max-width: 992px) {
@@ -749,38 +925,6 @@ footer {
     }
 
 
-    /*------- SEARCH SECTION--------*/
-    #search-section {
-        padding-inline: 0px;
-    }
-    
-    .search-section-container {
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        gap: 100px;
-        padding: 10px 15px;
-        border-radius: 5px;
-    }
-    
-    .search-container {
-        display: flex;
-        width: 100%;
-    }
-    
-    #search-input {
-        width: 100%;
-        padding: 10px 30px;
-        font-size: 20px;
-        border-radius: 25px;
-        outline: none;
-        border: none;
-        color: #363232;
-        border: 1px solid rgb(110, 108, 108)
-    }
-    /*------------------------------------*/
-
-
     /* BANNER */
     #banner-container {
         padding-top: 150px;
@@ -814,14 +958,17 @@ footer {
         margin-left: 60px;
         position: relative;
     }
+
+    /*--- TOP RENTALS -----------------*/
+    #top-rental-container {
+        padding-inline: 20px;
+        padding-block: 30px;
+    }
 }
-/*------------------------------------------*/
 
 
 
-
-
-@media only screen and (min-width: 1024px) {
+@media only screen and (max-width: 1024px) {
     #header {
         padding-inline: 20px;
     }
@@ -839,38 +986,6 @@ footer {
     }
 
 
-    /*------- SEARCH SECTION--------*/
-    #search-section {
-        padding-inline: 0px;
-    }
-    
-    .search-section-container {
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        gap: 100px;
-        padding: 10px 15px;
-        border-radius: 5px;
-    }
-    
-    .search-container {
-        display: flex;
-        width: 100%;
-    }
-    
-    #search-input {
-        width: 100%;
-        padding: 10px 30px;
-        font-size: 20px;
-        border-radius: 25px;
-        outline: none;
-        border: none;
-        color: #363232;
-        border: 1px solid rgb(110, 108, 108)
-    }
-    /*------------------------------------*/
-
-
     /* BANNER */
     #banner-container {
         padding-top: 150px;
@@ -905,4 +1020,3 @@ footer {
         position: relative;
     }
 }
-/*------------------------------------------*/

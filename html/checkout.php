@@ -19,7 +19,7 @@ $lastname = $_SESSION["user_lastname"];
 <head>
     <meta charset="UTF-8">
     <title>Rental Checkout</title>
-    <link rel="stylesheet" href="../css/index_7.css">
+    <link rel="stylesheet" href="../css/index_8.css">
     <link rel="stylesheet" href="../css/checkout.css">
 
     <style>
