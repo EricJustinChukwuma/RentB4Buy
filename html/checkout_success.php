@@ -1,5 +1,7 @@
 <?php
     require_once "../includes/config_session.inc.php";
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +11,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/index_8.css">
+    <style>
+        .success-msg-container {
+            padding-block: 250px 100px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-msg {
+            background-color: #28a745;
+            padding: 40px 60px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            animation-name: Popup-msg;
+        }
+
+        .success-msg svg {
+            height: 80px;
+            width: 80px
+        }
+
+        .success-msg h1 {
+            color: #fff;
+        }
+
+        .success-msg p {
+            color: #fff;
+            font-size: 1.2em
+        }
+
+        .success-msg a {
+            background-color: black;
+            color: #fff;
+            padding: 15px 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+
+        .success-msg a svg {
+            fill: #fff;
+            height: 30px;
+            width: 60px
+        }
+    </style>
 </head>
 <body>
     <header id="header" class="section">
@@ -133,10 +187,16 @@
         </nav>
     </header>
 
-    <div style="padding-top: 200px;">
-        <?php
-            echo "RENTAL SUCESSFUL";
-        ?>
+    <div class="success-msg-container">
+        <div class="success-msg">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM229.4 385.9C249.8 413.9 282.8 432 320 432C357.2 432 390.2 413.9 410.6 385.9C418.4 375.2 433.4 372.8 444.1 380.6C454.8 388.4 457.2 403.4 449.4 414.1C420.3 454 373.2 480 320 480C266.8 480 219.7 454 190.6 414.1C182.8 403.4 185.2 388.4 195.9 380.6C206.6 372.8 221.6 375.2 229.4 385.9zM208 272C208 254.3 222.3 240 240 240C257.7 240 272 254.3 272 272C272 289.7 257.7 304 240 304C222.3 304 208 289.7 208 272zM400 240C417.7 240 432 254.3 432 272C432 289.7 417.7 304 400 304C382.3 304 368 289.7 368 272C368 254.3 382.3 240 400 240z"/></svg>
+            <h1>RENTAL SUCCESS!!!</h1>
+            <p>Product should be delivered within 3-5 days</p>
+            <a href="../html/product_page.php">
+                Continue Browsing Products
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M566.6 342.6C579.1 330.1 579.1 309.8 566.6 297.3L406.6 137.3C394.1 124.8 373.8 124.8 361.3 137.3C348.8 149.8 348.8 170.1 361.3 182.6L466.7 288L96 288C78.3 288 64 302.3 64 320C64 337.7 78.3 352 96 352L466.7 352L361.3 457.4C348.8 469.9 348.8 490.2 361.3 502.7C373.8 515.2 394.1 515.2 406.6 502.7L566.6 342.7z"/></svg>
+            </a>
+        </div>
     </div>
 
     <footer>
