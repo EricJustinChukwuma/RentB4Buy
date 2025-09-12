@@ -180,7 +180,7 @@
             </a>
             <div>
                 <h5>The Company</h5>
-                <a href="">About the company</a>
+                <a href="">About RBB Platform</a>
                 <a href="">Help Center</a>
                 <a href="">Reviews</a>
             </div>

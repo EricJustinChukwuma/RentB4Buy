@@ -29,7 +29,6 @@
             align-items: center;
             justify-content: center;
             gap: 40px;
-            animation-name: Popup-msg;
         }
 
         .success-msg svg {
@@ -208,7 +207,7 @@
             </a>
             <div>
                 <h5>The Company</h5>
-                <a href="">About the company</a>
+                <a href="">About RBB Platform</a>
                 <a href="">Help Center</a>
                 <a href="">Reviews</a>
             </div>

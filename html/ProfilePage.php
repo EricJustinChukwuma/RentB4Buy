@@ -223,14 +223,14 @@
     
     <footer>
         <div class="footer-container">
-            <a class="footer-logo" href="./index.php">
+            <a class="footer-logo" href="index.html">
                 <span>Rent</span> <br>
                 <span>b4</span> <br>
                 <span>Buy</span>
             </a>
             <div>
                 <h5>The Company</h5>
-                <a href="">About the company</a>
+                <a href="">About RBB Platform</a>
                 <a href="">Help Center</a>
                 <a href="">Reviews</a>
             </div>

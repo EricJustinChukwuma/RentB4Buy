@@ -18,15 +18,23 @@ $lastname = $_SESSION["user_lastname"];
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rental Checkout</title>
     <link rel="stylesheet" href="../css/index_8.css">
-    <link rel="stylesheet" href="../css/checkout.css">
+    <link rel="stylesheet" href="../css/checkout_1.css">
 
     <style>
         #error-msg {
             color: red;
             font-size: 1.2em;
         }
+
+        .cart-total-price {
+            font-size: 1.6em;
+            color: #00c853;
+        }
+
+        
     </style>
 </head>
 <body>
@@ -171,7 +179,7 @@ $lastname = $_SESSION["user_lastname"];
             <?php endforeach; ?>
         </div>
 
-        <form class="checkout-form" action="../includes/checkout_process.php" method="POST">
+        <form id="checkout-form" class="checkout-form" action="../includes/checkout_process.php" method="POST">
             
 
             <h3>Delivery Address</h3>
@@ -187,12 +195,12 @@ $lastname = $_SESSION["user_lastname"];
 
             <div class="date-days-container">
                 <label>Rental Start Date:</label>
-                <input type="date" name="start_date" min="<?= $minStartDate ?>" required>
+                <input type="date" name="start_date" min="<?= $minStartDate ?>" >
             </div>
 
             <div class="date-days-container">
                 <label>Rental Duration (days):</label><br>
-                <input type="number" name="rental_days" min="1" required>
+                <input type="number" name="rental_days" min="1" >
             </div>
 
             <p class="cart-total-price">
@@ -201,7 +209,7 @@ $lastname = $_SESSION["user_lastname"];
 
             <div>
                 <label>Payment Method:</label>
-                <select class="payment-method" name="payment_method" required>
+                <select class="payment-method" name="payment_method" >
                     <option value="card">Card</option>
                     <option value="paypal">PayPal</option>
                 </select>
@@ -209,10 +217,10 @@ $lastname = $_SESSION["user_lastname"];
 
             <div id="card-details">
                 <h3>Card Details</h3>
-                <input type="text" name="cardholder_name" placeholder="Cardholder Name" required>
-                <input type="text" name="card_number" placeholder="Card Number" maxlength="16" required>
-                <input type="text" name="expiry_date" placeholder="MM/YY" required>
-                <input type="text" name="cvv" placeholder="CVV" maxlength="4" required>
+                <input type="text" name="cardholder_name" placeholder="Cardholder Name" >
+                <input type="text" name="card_number" placeholder="Card Number" maxlength="16" >
+                <input type="text" name="expiry_date" placeholder="MM/YY" >
+                <input type="text" name="cvv" placeholder="CVV" maxlength="4" >
             </div>
 
             <button type="submit">Confirm Rental</button>
@@ -228,7 +236,7 @@ $lastname = $_SESSION["user_lastname"];
             </a>
             <div>
                 <h5>The Company</h5>
-                <a href="">About the company</a>
+                <a href="">About RBB Platform</a>
                 <a href="">Help Center</a>
                 <a href="">Reviews</a>
             </div>
@@ -245,22 +253,21 @@ $lastname = $_SESSION["user_lastname"];
 
     <script src="../js/index.js"></script>
     <script>
-        
+        document.getElementById("checkout-form").addEventListener("submit", function(event) {
+            let inputs = document.querySelectorAll("#checkout-form input");
+            let emptyFields = [];
 
-        // const handleSubmit = onsubmit(function() {
-        //     let houseNumber = document.getElementById('house-number').value
-        //     let streetName = document.getElementById('street-name').value
-        //     let postCode = document.getElementById('post-code').value
-        //     let town = document.getElementById('town').value
-        //     let county = document.getElementById('county').value
+            inputs.foreach(input => {
+                if (input.value.trim() === "") {
+                    emptyFields.push(input.name)
+                }
+            })
 
-        //     let errMsg = document.getElementById('error-msg')
-
-
-        //     if (houseNumber || streetName || postCode || town || county === "") {
-        //         errMsg.innerHTML = "Please fill in all field";
-        //     }
-        // })
+            if (emptyFields.length > 0) {
+                event.preventDefault();
+                alert("Please Fill Out All Input Fields Before Submitting!!")
+            }
+        })
     </script>
 
 </body>

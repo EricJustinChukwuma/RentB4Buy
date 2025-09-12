@@ -218,6 +218,30 @@ $rentals = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
+
+    <footer>
+        <div class="footer-container">
+            <a class="footer-logo" href="index.html">
+                <span>Rent</span> <br>
+                <span>b4</span> <br>
+                <span>Buy</span>
+            </a>
+            <div>
+                <h5>The Company</h5>
+                <a href="">About RBB Platform</a>
+                <a href="">Help Center</a>
+                <a href="">Reviews</a>
+            </div>
+            <div>
+                <h5>Info</h5>
+                <a href="">How it works</a>
+                <a href="">Terms & Conditions</a>
+                <a href="">FAQ's</a>
+                <a href="">Legal</a>
+                <a href="">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
 
