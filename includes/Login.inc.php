@@ -1,5 +1,6 @@
 <?php
 
+// Example from a Tutorial on YouTube
 declare(strict_types=1);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

@@ -1,4 +1,5 @@
 <?php
+// Example from a YouTube Tutorial
 
 declare(strict_types=1);
 
@@ -31,6 +32,7 @@ function signup_inputs() {
     echo '<input type="text" name="pwd" placeholder="Password">';
 }
 
+// Checks if any errors exist in a Session variable called "errors_signup"
 function check_signup_errors() {
     if (isset($_SESSION['errors_signup'])) {
         $errors = $_SESSION['errors_signup'];

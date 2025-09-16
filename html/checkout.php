@@ -193,6 +193,8 @@ $lastname = $_SESSION["user_lastname"];
                 <input id="county" type="text" name="county" placeholder="County" >
             </div>
 
+            <h3>Rental Details</h3>
+
             <div class="date-days-container">
                 <label>Rental Start Date:</label>
                 <input type="date" name="start_date" min="<?= $minStartDate ?>" >

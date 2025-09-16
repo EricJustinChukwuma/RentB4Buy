@@ -29,17 +29,12 @@ $user_id = $_SESSION['user_id'];
 $cardholder_name = trim($_POST['cardholder_name'] ?? '');
 $card_number = trim($_POST['card_number'] ?? '');
 $expiry_date = trim($_POST['expiry_date'] ?? '');
-$cvv = trim($_POST['cvv'] ?? '');
+// $cvv = trim($_POST['cvv'] ?? '');
 
 // Checks no card info is missing from the POST request
 if (!$cardholder_name || !$card_number || !$expiry_date || !$cvv) {
     die("Please fill in all card details.");
 }
-
-// $query = "SELECT * FROM Users WHERE id = :user_id";
-// $stmt = $pdo->prepare($query);
-// $stmt->bindParam(':user_id', $user_id);
-// $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Insert card details 
 //REMEMBER TO TAKE OUT THE CVV
@@ -48,7 +43,7 @@ $stmt->bindParam(':user_id', $user_id);
 $stmt->bindParam(':cardholder_name', $cardholder_name);
 $stmt->bindParam(':card_number', $card_number);
 $stmt->bindParam(':expiry_date', $expiry_date);
-$stmt->bindParam(':cvv', $cvv);
+// $stmt->bindParam(':cvv', $cvv);
 $stmt->execute();
 $card_id = $pdo->lastInsertId(); // gets the id of the last inserted row of data to the cards table
 
@@ -68,12 +63,12 @@ try {
     }
 
     // Insert simulated card entry since there are no real payment gateway here
-    $stmt = $pdo->prepare("INSERT INTO cards (user_id, cardholder_name, card_number, expiry_date, cvv) VALUES (:user_id, :cardholder_name, :card_number, :expiry_date, :cvv)");
+    $stmt = $pdo->prepare("INSERT INTO cards (user_id, cardholder_name, card_number, expiry_date, cvv) VALUES (:user_id, :cardholder_name, :card_number, :expiry_date)");
     $stmt->bindParam(':user_id', $user_id);
     $stmt->bindParam(':cardholder_name', $cardholder_name);
     $stmt->bindParam(':card_number', $card_number);
     $stmt->bindParam(':expiry_date', $user_id);
-    $stmt->bindParam(':cvv', $cvv);
+    // $stmt->bindParam(':cvv', $cvv);
     $stmt->execute();
     $card_id = $pdo->lastInsertId(); // gets the id of the last inserted row of data to the cards table
 

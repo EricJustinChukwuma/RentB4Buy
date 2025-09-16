@@ -9,7 +9,7 @@ try {
     $stmt = $pdo->prepare($query);
     $stmt->execute();
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($products);
+    echo json_encode($products); // encodes the products result from the query
 } catch (PDOException $e) {
     echo json_encode(["error" => $e->getMessage()]);
 }

@@ -1,5 +1,5 @@
 <?php
-
+// Example from a Tutorial on YouTube
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $username = $_POST["username"];
     $firstName = $_POST["firstname"];
