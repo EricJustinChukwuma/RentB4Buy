@@ -45,24 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
     try {
-        // CHECK IF RENTAL ALREADY EXISTS
-        // $query = "SELECT * FROM Rentals 
-        //           WHERE user_id = :user_id AND product_id = :product_id 
-        //           AND rent_status = 'Pending';";
-        // $stmt = $pdo->prepare($query);
-        // $stmt->execute([
-        //     ':user_id' => $user_id,
-        //     ':product_id' => $product_id
-        // ]);
-        // $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // if (!empty($result)) {
-        //     echo json_encode([
-        //         "status" => "error",
-        //         "message" => "Product already processed for renting"
-        //     ]);
-        //     exit();
-        // }
 
         // INSERT INTO RENTALS
         $insertQuery = "INSERT INTO Rentals (user_id, product_id, rent_status) 

@@ -71,9 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
             addBtn.addEventListener("click", function() {
                 if (count < product.available_qty) {
                     count++;
-                productCount.innerHTML = count;
+                    productCount.innerHTML = count;
                 } else {
-                    alert("Avalaible product quantity exceeded")
+                    alert("Available product quantity exceeded")
                 }
             });
 
@@ -101,9 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     window.location.href = "../Login.php"; // Redirect to login page
                     return;
                 } 
-                // else {
-                //     // window.location.href = "../Checkout_rental.php";
-                // }
         
                 const productId = this.getAttribute("data-product-id");
                 const selectedQuantity = 1; // or get quantity if needed
@@ -121,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(response => response.json())
                 .then(data => {
                     if (data.status === "success") {
-                        window.location.href = "../html/Cart.php"; // ✅ redirect to cart
+                        window.location.href = "../html/Cart.php"; // redirect to cart
                     } else {
                         alert(data.message || "Failed to rent product.");
                     }

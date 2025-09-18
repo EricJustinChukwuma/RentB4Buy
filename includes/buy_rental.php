@@ -29,7 +29,7 @@ $user_id = $_SESSION['user_id'];
 $cardholder_name = trim($_POST['cardholder_name'] ?? '');
 $card_number = trim($_POST['card_number'] ?? '');
 $expiry_date = trim($_POST['expiry_date'] ?? '');
-// $cvv = trim($_POST['cvv'] ?? '');
+$cvv = trim($_POST['cvv'] ?? '');
 
 // Checks no card info is missing from the POST request
 if (!$cardholder_name || !$card_number || !$expiry_date || !$cvv) {
@@ -43,7 +43,7 @@ $stmt->bindParam(':user_id', $user_id);
 $stmt->bindParam(':cardholder_name', $cardholder_name);
 $stmt->bindParam(':card_number', $card_number);
 $stmt->bindParam(':expiry_date', $expiry_date);
-// $stmt->bindParam(':cvv', $cvv);
+$stmt->bindParam(':cvv', $cvv);
 $stmt->execute();
 $card_id = $pdo->lastInsertId(); // gets the id of the last inserted row of data to the cards table
 
@@ -68,7 +68,7 @@ try {
     $stmt->bindParam(':cardholder_name', $cardholder_name);
     $stmt->bindParam(':card_number', $card_number);
     $stmt->bindParam(':expiry_date', $user_id);
-    // $stmt->bindParam(':cvv', $cvv);
+    $stmt->bindParam(':cvv', $cvv);
     $stmt->execute();
     $card_id = $pdo->lastInsertId(); // gets the id of the last inserted row of data to the cards table
 

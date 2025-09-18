@@ -26,7 +26,7 @@ if (isset($_SESSION["user_id"])) {
         // which sets a new session ID and sets the session variable called last_regeneration to the current time.
         regenerate_session_id_loggedin();
     } else {
-        $interval = 60 * 30; // Time is seconds
+        $interval = 60 * 30; // Time in seconds
     
         // Checks if the current time minus the time of the session variable last_regeneration is >= 30 min 
         if(time() - $_SESSION["last_regeneration"] >= $interval) {

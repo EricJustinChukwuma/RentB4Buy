@@ -9,7 +9,7 @@ if (!isset($_SESSION['cart'])) {
 
 // Decode the fetched data from the post request when the user clicks a button to either increase, decrease or remove a product
 $data = json_decode(file_get_contents("php://input"), true);
-$product_id = intval($data['product_id'] ?? 0);
+$product_id = intval($data['product_id'] ?? 0); // sets variable to be eqaul to the integer value from the 
 $change = intval($data['change'] ?? 0);
 $action = $data['action'] ?? '';
 
