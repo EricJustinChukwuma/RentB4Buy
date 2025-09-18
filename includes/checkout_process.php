@@ -1,16 +1,5 @@
 <?php
-/*
-    If you are dealing with cardholder data (like PAN, expiration date, CVV, or even names linked to them), you must follow PCI DSS:
 
-Encrypt data at rest and in transit.
-
-Limit access strictly.
-
-Don’t store sensitive authentication data (like CVV) after authorization.
-
-Use strong key management.
-
-*/
 require_once "config_session.inc.php";
 require_once "dbh.inc.php";
 
@@ -43,7 +32,7 @@ $cvv             = $_POST['cvv'] ?? '';
 // $hashedExpiryDate = password_hash($pwd, PASSWORD_BCRYPT, $options);
 // $hashedCVV = password_hash($pwd, PASSWORD_BCRYPT, $options);
 
-$todayPlus3 = date('Y-m-d', strtotime('+3 days')); // sets start date to never be less than 3 days after a user makes a request
+$todayPlus3 = date('Y-m-d', strtotime('+3 days')); // sets start date to never be less than 3 days after a user makes a rental request
 
 // checks that start and rental days length is appropriate
 if ($start_date < $todayPlus3 || $rental_days < 1) {
@@ -52,10 +41,15 @@ if ($start_date < $todayPlus3 || $rental_days < 1) {
 // sets end date to be start date + rentals days and converted to date or in date format
 $end_date = (new DateTime($start_date))->modify("+$rental_days days")->format('Y-m-d');
 
+// Checks if any inout field for card details is empty
+if (empty($cardholder_name) || empty($card_number) || empty($expiry_date) || empty($cvv)) {
+    die("Please Fill in All Fields");
+};
+
 try {
     $pdo->beginTransaction();
 
-    // Insert address
+    // Insert addresses
     $stmt = $pdo->prepare("INSERT INTO addresses (user_id, house_number, street_name, town, county, post_code)
                            VALUES (:user_id, :house_number, :street_name, :town, :county, :post_code)");
     $stmt->bindParam(':user_id', $user_id);
@@ -67,7 +61,7 @@ try {
     $stmt->execute();
     $address_id = $pdo->lastInsertId();
 
-    // Insert card
+    // Insert into cards
     $stmt = $pdo->prepare("INSERT INTO cards (user_id, cardholder_name, card_number, expiry_date, cvv)
                            VALUES (:user_id, :cardholder_name, :card_number, :expiry_date, :cvv)");
     $stmt->bindParam(':user_id', $user_id);
@@ -91,6 +85,7 @@ try {
             throw new Exception("Product ID {$product_id} does not exist in products table.");
         }
 
+        // Inserts into rentals
         $stmt = $pdo->prepare("INSERT INTO rentals 
             (user_id, address_id, product_id, quantity, start_date, end_date, rent_status, total_price)
             VALUES (:user_id, :address_id, :product_id, :quantity, :start_date, :end_date, 'pending', :total_price)");

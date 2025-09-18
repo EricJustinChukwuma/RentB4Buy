@@ -222,7 +222,7 @@ $lastname = $_SESSION["user_lastname"];
                 <input type="text" name="cardholder_name" placeholder="Cardholder Name" >
                 <input type="text" name="card_number" placeholder="Card Number" maxlength="16" >
                 <input type="text" name="expiry_date" placeholder="MM/YY" >
-                <input type="text" name="cvv" placeholder="CVV" maxlength="4" >
+                <input type="text" name="cvv" placeholder="CVV" minlength="3" maxlength="4" >
             </div>
 
             <button type="submit">Confirm Rental</button>
@@ -256,7 +256,7 @@ $lastname = $_SESSION["user_lastname"];
     <script src="../js/index.js"></script>
     <script>
         document.getElementById("checkout-form").addEventListener("submit", function(event) {
-            let inputs = document.querySelectorAll("#checkout-form input");
+            let inputs = document.querySelectorAll(".checkout-form input");
             let emptyFields = [];
 
             inputs.foreach(input => {
